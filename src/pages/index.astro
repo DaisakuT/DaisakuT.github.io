@@ -57,7 +57,7 @@ const totalSources = posts.reduce((n, p) => n + (p.data.sourceCount || 0), 0);
                 ></span>
               </div>
               <span class="record__label">
-                {ym(post.data.sourceFrom)} 〜 {ym(post.data.sourceTo)} の記録 {post.data.sourceCount} 件より
+                {new Date(post.data.sourceFrom).getFullYear()}年 〜 {new Date(post.data.sourceTo).getFullYear()}年の記録より
               </span>
             </div>
           )}
