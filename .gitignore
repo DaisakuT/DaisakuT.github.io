@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+data/raw/**/*.jpg
+data/raw/**/*.jpeg
+data/raw/**/*.png
+data/raw/**/*.mp4
+data/raw/**/*.webp
