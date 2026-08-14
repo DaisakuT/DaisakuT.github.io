@@ -162,7 +162,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let sawBusy = false;
 let lastError = null;
 
-async function callModel(model) {
+async function callModel(model, promptText = prompt) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
   for (let attempt = 1; attempt <= 3; attempt++) {
     let res;
@@ -171,7 +171,7 @@ async function callModel(model) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          contents: [{ role: "user", parts: [{ text: prompt }] }],
+          contents: [{ role: "user", parts: [{ text: promptText }] }],
           generationConfig: { temperature: 0.85, maxOutputTokens: 8192, responseMimeType: "application/json" },
         }),
       });
@@ -236,28 +236,89 @@ if (!article) {
 
 console.log(`書けました（使用モデル: ${usedModel}）`);
 
+// --- 保存先のファイル名を先に決める -----------------------------------------
+let slugBase = String(article.slug || target.keyword)
+  .toLowerCase()
+  .replace(/[^a-z0-9-]+/g, "-")
+  .replace(/^-+|-+$/g, "")
+  .slice(0, 60);
+if (!slugBase) slugBase = `post-${Date.now()}`;
+
+fs.mkdirSync(CONTENT_DIR, { recursive: true });
+let outFile = path.join(CONTENT_DIR, `${slugBase}.md`);
+let n = 2;
+while (fs.existsSync(outFile)) {
+  slugBase = `${slugBase}-${n++}`;
+  outFile = path.join(CONTENT_DIR, `${slugBase}.md`);
+}
+
+// --- アイキャッチの図解（SVG）を作る -----------------------------------------
+// 画像生成APIは使わず、同じ無料のテキストAIに図形データを書かせます。
+// 実在の場所を写真らしく描かせないこと、配色をサイトに揃えることを条件にしています。
+const HERO_DIR = process.env.HERO_DIR || "public/hero";
+
+const heroPrompt = `次の記事の内容を表す、抽象的な図解をSVGで1つ作ってください。
+
+記事タイトル: ${article.title}
+記事の要約: ${article.description}
+テーマ: ${target.keyword}
+
+# 必ず守ること
+- 出力は width/height を持たない <svg viewBox="0 0 1200 500"> から始め </svg> で終わること
+- 使ってよい色はこの5つだけ: #F2F4F3(背景) #14495B(主役) #D9A227(強調) #CDD5D6(補助) #10171C(文字)
+- 記事の構造（段階・比較・因果など）が一目で伝わる幾何学的な図にすること
+- 写真のような描写、人物の顔、実在の店舗や施設の再現はしないこと
+- グラデーション、影、透明度の多用はしないこと
+- 文字を入れる場合は日本語で合計12文字以内、font-family="sans-serif" を指定すること
+- script, image, foreignObject, 外部URLの参照は一切使わないこと
+
+# 出力形式
+{"svg": "ここにSVGコード"} というJSONのみを返すこと。`;
+
+function sanitizeSvg(raw) {
+  if (typeof raw !== "string") return null;
+  let svg = raw.trim().replace(/^```(?:svg|xml|html)?|```$/g, "").trim();
+  const start = svg.indexOf("<svg");
+  const end = svg.lastIndexOf("</svg>");
+  if (start === -1 || end === -1) return null;
+  svg = svg.slice(start, end + 6);
+
+  // 危険・不要な要素を落とす
+  svg = svg
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<(image|foreignObject)[\s\S]*?<\/\1>/gi, "")
+    .replace(/<(image|foreignObject)\b[^>]*\/>/gi, "")
+    .replace(/\son\w+\s*=\s*(["'])[\s\S]*?\1/gi, "")
+    .replace(/\s(xlink:href|href)\s*=\s*(["'])\s*https?:[\s\S]*?\2/gi, "");
+
+  if (!/viewBox\s*=/.test(svg)) return null;
+  if (svg.length > 80000) return null;
+  return svg;
+}
+
+let heroPath = null;
+for (const m of [usedModel, ...models.filter((x) => x !== usedModel)]) {
+  const res = await callModel(m, heroPrompt);
+  const svg = res && sanitizeSvg(res.svg);
+  if (svg) {
+    fs.mkdirSync(HERO_DIR, { recursive: true });
+    const file = path.join(HERO_DIR, `${slugBase}.svg`);
+    fs.writeFileSync(file, svg, "utf8");
+    heroPath = `/hero/${slugBase}.svg`;
+    console.log(`アイキャッチを作りました: ${file}`);
+    break;
+  }
+  console.log("  図解がうまく作れませんでした。次のモデルで試します");
+}
+if (!heroPath) console.log("アイキャッチなしで進めます（記事は問題なく公開されます）");
+
 // --- 後処理と保存 -----------------------------------------------------------
 let body = String(article.body_markdown || "")
   .replace(/\[([^\]]+)\]\(https?:\/\/[^)]+\)/g, "$1") // 外部リンクが混ざったら文字だけ残す
   .replace(/https?:\/\/\S+/g, "")
   .trim();
 
-const refNote = refs.map((r) => `- ${r.date}（${r.platform}）`).join("\n");
-body += `\n\n---\n\n### この記事のもとになった記録\n\n実際の投稿・記録をもとに書いています。\n\n${refNote}\n`;
-
 const esc = (s) => String(s).replace(/'/g, "''").replace(/\n/g, " ").trim();
-let slug = String(article.slug || target.keyword)
-  .toLowerCase()
-  .replace(/[^a-z0-9-]+/g, "-")
-  .replace(/^-+|-+$/g, "")
-  .slice(0, 60);
-if (!slug) slug = `post-${Date.now()}`;
-
-fs.mkdirSync(CONTENT_DIR, { recursive: true });
-let file = path.join(CONTENT_DIR, `${slug}.md`);
-let n = 2;
-while (fs.existsSync(file)) file = path.join(CONTENT_DIR, `${slug}-${n++}.md`);
-
 const today = new Date().toISOString().slice(0, 10);
 const frontmatter = `---
 title: '${esc(article.title)}'
@@ -265,17 +326,17 @@ description: '${esc(article.description)}'
 pubDate: '${today}'
 sourceCount: ${refs.length}
 sourceFrom: '${refs[0].date}'
-sourceTo: '${refs.at(-1).date}'
+sourceTo: '${refs.at(-1).date}'${heroPath ? `\nheroImage: '${heroPath}'` : ""}
 ---
 
 `;
 
-fs.writeFileSync(file, frontmatter + body + "\n", "utf8");
+fs.writeFileSync(outFile, frontmatter + body + "\n", "utf8");
 
-state.done.push({ keyword: target.keyword, slug, date: today, refs: refs.length });
+state.done.push({ keyword: target.keyword, slug: slugBase, date: today, refs: refs.length });
 fs.mkdirSync(path.dirname(STATE_FILE), { recursive: true });
 fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 1), "utf8");
 
-console.log(`\n記事を書き出しました: ${file}`);
+console.log(`\n記事を書き出しました: ${outFile}`);
 console.log(`タイトル: ${article.title}`);
 console.log(`文字数: 約${body.length}字`);
