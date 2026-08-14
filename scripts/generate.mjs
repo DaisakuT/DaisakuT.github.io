@@ -162,7 +162,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let sawBusy = false;
 let lastError = null;
 
-async function callModel(model, promptText = prompt) {
+async function callModel(model, promptText = prompt, mode = "json") {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
   for (let attempt = 1; attempt <= 3; attempt++) {
     let res;
@@ -172,7 +172,11 @@ async function callModel(model, promptText = prompt) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           contents: [{ role: "user", parts: [{ text: promptText }] }],
-          generationConfig: { temperature: 0.85, maxOutputTokens: 8192, responseMimeType: "application/json" },
+          generationConfig: {
+            temperature: 0.85,
+            maxOutputTokens: 8192,
+            ...(mode === "json" ? { responseMimeType: "application/json" } : {}),
+          },
         }),
       });
     } catch (e) {
@@ -204,7 +208,14 @@ async function callModel(model, promptText = prompt) {
       console.log(`  ${model}: 空の応答が返りました`);
       return null;
     }
-    return JSON.parse(text.replace(/^```(?:json)?|```$/g, "").trim());
+    if (mode === "text") return text;
+    try {
+      return JSON.parse(text.replace(/^```(?:json)?|```$/g, "").trim());
+    } catch (e) {
+      lastError = `応答をJSONとして読めませんでした: ${e.message}`;
+      console.log(`  ${model}: 応答の形式が不正でした`);
+      return null;
+    }
   }
   console.log(`  ${model}: 混雑が続くため、次のモデルに切り替えます`);
   return null;
@@ -273,7 +284,7 @@ const heroPrompt = `次の記事の内容を表す、抽象的な図解をSVGで
 - script, image, foreignObject, 外部URLの参照は一切使わないこと
 
 # 出力形式
-{"svg": "ここにSVGコード"} というJSONのみを返すこと。`;
+SVGコードだけを返すこと。説明文もコードブロックの記号もJSONも付けないこと。`;
 
 function sanitizeSvg(raw) {
   if (typeof raw !== "string") return null;
@@ -296,19 +307,24 @@ function sanitizeSvg(raw) {
   return svg;
 }
 
+// ここで何が起きても記事は必ず保存されるよう、全体をtry/catchで囲みます
 let heroPath = null;
-for (const m of [usedModel, ...models.filter((x) => x !== usedModel)]) {
-  const res = await callModel(m, heroPrompt);
-  const svg = res && sanitizeSvg(res.svg);
-  if (svg) {
-    fs.mkdirSync(HERO_DIR, { recursive: true });
-    const file = path.join(HERO_DIR, `${slugBase}.svg`);
-    fs.writeFileSync(file, svg, "utf8");
-    heroPath = `/hero/${slugBase}.svg`;
-    console.log(`アイキャッチを作りました: ${file}`);
-    break;
+try {
+  for (const m of [usedModel, ...models.filter((x) => x !== usedModel)]) {
+    const raw = await callModel(m, heroPrompt, "text");
+    const svg = raw && sanitizeSvg(raw);
+    if (svg) {
+      fs.mkdirSync(HERO_DIR, { recursive: true });
+      const file = path.join(HERO_DIR, `${slugBase}.svg`);
+      fs.writeFileSync(file, svg, "utf8");
+      heroPath = `/hero/${slugBase}.svg`;
+      console.log(`アイキャッチを作りました: ${file}`);
+      break;
+    }
+    console.log("  図解がうまく作れませんでした。次のモデルで試します");
   }
-  console.log("  図解がうまく作れませんでした。次のモデルで試します");
+} catch (e) {
+  console.log(`アイキャッチの生成でエラーが出ました: ${e.message}`);
 }
 if (!heroPath) console.log("アイキャッチなしで進めます（記事は問題なく公開されます）");
 
