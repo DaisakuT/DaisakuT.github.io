@@ -1,0 +1,81 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <line x1="80" y1="420" x2="1120" y2="420" stroke="#CDD5D6" stroke-width="2"/>
+  <line x1="550" y1="90" x2="550" y2="390" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="8 8"/>
+
+  <path d="M 180 230 C 180 130, 440 130, 440 230 C 440 330, 180 330, 180 230 Z" fill="none" stroke="#CDD5D6" stroke-width="3"/>
+
+  <g>
+    <path d="M 170 180 A 60 60 0 0 1 270 180" fill="none" stroke="#D9A227" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 180 160 A 45 45 0 0 1 260 160" fill="none" stroke="#D9A227" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="220" cy="230" r="55" fill="#D9A227"/>
+    <circle cx="220" cy="230" r="38" fill="#F2F4F3"/>
+    <circle cx="220" cy="230" r="22" fill="#14495B"/>
+    <text x="220" y="365" font-family="sans-serif" font-size="22" font-weight="bold" fill="#10171C" text-anchor="middle">温泉</text>
+  </g>
+
+  <g>
+    <path d="M 350 170 Q 370 160 400 170 T 450 170" fill="none" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 360 155 Q 380 145 400 155 T 440 155" fill="none" stroke="#CDD5D6" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="400" cy="230" r="55" fill="#14495B"/>
+    <circle cx="400" cy="230" r="38" fill="#F2F4F3"/>
+    <circle cx="400" cy="230" r="22" fill="#D9A227"/>
+    <text x="400" y="365" font-family="sans-serif" font-size="22" font-weight="bold" fill="#10171C" text-anchor="middle">水風呂</text>
+  </g>
+
+  <path d="M 475 230 L 525 230 M 515 220 L 528 230 L 515 240" fill="none" stroke="#14495B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="730" y="70" width="240" height="46" rx="23" fill="#14495B"/>
+  <text x="850" y="101" font-family="sans-serif" font-size="22" font-weight="bold" fill="#F2F4F3" text-anchor="middle">サウナ５選</text>
+
+  <g transform="translate(625, 150)">
+    <rect x="0" y="0" width="70" height="230" rx="10" fill="#14495B"/>
+    <circle cx="35" cy="40" r="16" fill="#D9A227"/>
+    <rect x="15" y="80" width="40" height="8" rx="4" fill="#CDD5D6"/>
+    <rect x="15" y="98" width="40" height="8" rx="4" fill="#CDD5D6"/>
+    <rect x="15" y="116" width="24" height="8" rx="4" fill="#CDD5D6"/>
+    <circle cx="35" cy="185" r="14" fill="#F2F4F3"/>
+    <text x="35" y="190" font-family="sans-serif" font-size="14" font-weight="bold" fill="#10171C" text-anchor="middle">1</text>
+  </g>
+
+  <g transform="translate(715, 150)">
+    <rect x="0" y="0" width="70" height="230" rx="10" fill="#CDD5D6"/>
+    <circle cx="35" cy="40" r="16" fill="#14495B"/>
+    <rect x="15" y="80" width="40" height="8" rx="4" fill="#14495B"/>
+    <rect x="15" y="98" width="40" height="8" rx="4" fill="#14495B"/>
+    <rect x="15" y="116" width="24" height="8" rx="4" fill="#14495B"/>
+    <circle cx="35" cy="185" r="14" fill="#F2F4F3"/>
+    <text x="35" y="190" font-family="sans-serif" font-size="14" font-weight="bold" fill="#10171C" text-anchor="middle">2</text>
+  </g>
+
+  <g transform="translate(805, 135)">
+    <rect x="0" y="0" width="80" height="260" rx="10" fill="#D9A227"/>
+    <circle cx="40" cy="45" r="20" fill="#14495B"/>
+    <rect x="18" y="90" width="44" height="10" rx="5" fill="#F2F4F3"/>
+    <rect x="18" y="110" width="44" height="10" rx="5" fill="#F2F4F3"/>
+    <rect x="18" y="130" width="28" height="10" rx="5" fill="#F2F4F3"/>
+    <circle cx="40" cy="210" r="16" fill="#14495B"/>
+    <text x="40" y="216" font-family="sans-serif" font-size="16" font-weight="bold" fill="#F2F4F3" text-anchor="middle">3</text>
+  </g>
+
+  <g transform="translate(905, 150)">
+    <rect x="0" y="0" width="70" height="230" rx="10" fill="#CDD5D6"/>
+    <circle cx="35" cy="40" r="16" fill="#14495B"/>
+    <rect x="15" y="80" width="40" height="8" rx="4" fill="#14495B"/>
+    <rect x="15" y="98" width="40" height="8" rx="4" fill="#14495B"/>
+    <rect x="15" y="116" width="24" height="8" rx="4" fill="#14495B"/>
+    <circle cx="35" cy="185" r="14" fill="#F2F4F3"/>
+    <text x="35" y="190" font-family="sans-serif" font-size="14" font-weight="bold" fill="#10171C" text-anchor="middle">4</text>
+  </g>
+
+  <g transform="translate(995, 150)">
+    <rect x="0" y="0" width="70" height="230" rx="10" fill="#14495B"/>
+    <circle cx="35" cy="40" r="16" fill="#D9A227"/>
+    <rect x="15" y="80" width="40" height="8" rx="4" fill="#CDD5D6"/>
+    <rect x="15" y="98" width="40" height="8" rx="4" fill="#CDD5D6"/>
+    <rect x="15" y="116" width="24" height="8" rx="4" fill="#CDD5D6"/>
+    <circle cx="35" cy="185" r="14" fill="#F2F4F3"/>
+    <text x="35" y="190" font-family="sans-serif" font-size="14" font-weight="bold" fill="#10171C" text-anchor="middle">5</text>
+  </g>
+</svg>
