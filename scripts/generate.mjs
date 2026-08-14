@@ -90,25 +90,31 @@ if (!target) {
 console.log(`キーワード: ${target.keyword}`);
 console.log(`参照する自分の投稿: ${refs.length} 件`);
 
-// --- 使うモデルを自動で選ぶ（モデル名の改廃に追従するため）------------------
-async function pickModel() {
-  if (process.env.GEMINI_MODEL) return process.env.GEMINI_MODEL;
+// --- 使うモデルの候補を並べる ------------------------------------------------
+// 混雑（503）に備えて、第1候補がだめなら次のモデルへ自動で切り替えます。
+const FALLBACK_MODELS = ["gemini-2.5-flash", "gemini-2.5-flash-lite"];
+
+async function pickModels() {
+  if (process.env.GEMINI_MODEL) return [process.env.GEMINI_MODEL, ...FALLBACK_MODELS];
   try {
     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`);
     const { models = [] } = await res.json();
-    const candidates = models
+    const all = models
       .filter((m) => (m.supportedGenerationMethods || []).includes("generateContent"))
       .map((m) => m.name.replace("models/", ""))
-      .filter((n) => n.includes("flash") && !/(lite|image|tts|embedding|live|preview|exp)/.test(n));
-    candidates.sort((a, b) => {
-      const v = (s) => parseFloat((s.match(/gemini-(\d+(?:\.\d+)?)/) || [0, 0])[1]);
-      return v(b) - v(a);
-    });
-    if (candidates[0]) return candidates[0];
+      .filter((n) => n.includes("flash") && !/(image|tts|embedding|live|audio|preview|exp)/.test(n));
+
+    const ver = (s) => parseFloat((s.match(/gemini-(\d+(?:\.\d+)?)/) || [0, 0])[1]);
+    const heavy = all.filter((n) => !n.includes("lite")).sort((a, b) => ver(b) - ver(a));
+    const lite = all.filter((n) => n.includes("lite")).sort((a, b) => ver(b) - ver(a));
+
+    // 通常版を新しい順 → それでもだめなら軽量版（混雑しにくい）
+    const ordered = [...heavy, ...lite];
+    if (ordered.length) return ordered.slice(0, 4);
   } catch {
     /* noop */
   }
-  return "gemini-2.5-flash";
+  return FALLBACK_MODELS;
 }
 
 // --- プロンプト -------------------------------------------------------------
@@ -150,35 +156,85 @@ ${experienceBlock}
 }`;
 
 // --- 生成 -------------------------------------------------------------------
-async function generate(model) {
+const WAIT_UNIT = Number(process.env.WAIT_UNIT || 15000);
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+let sawBusy = false;
+let lastError = null;
+
+async function callModel(model) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
-  for (let attempt = 1; attempt <= 4; attempt++) {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ role: "user", parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.85, maxOutputTokens: 8192, responseMimeType: "application/json" },
-      }),
-    });
-    if (res.status === 429 || res.status >= 500) {
-      const wait = attempt * 20000;
-      console.log(`${res.status} が返りました。${wait / 1000}秒待って再試行します (${attempt}/4)`);
-      await new Promise((r) => setTimeout(r, wait));
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    let res;
+    try {
+      res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ role: "user", parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.85, maxOutputTokens: 8192, responseMimeType: "application/json" },
+        }),
+      });
+    } catch (e) {
+      sawBusy = true;
+      lastError = `接続エラー: ${e.message}`;
+      console.log(`  ${model}: 接続できません。${(WAIT_UNIT * attempt) / 1000}秒待ちます (${attempt}/3)`);
+      await sleep(WAIT_UNIT * attempt);
       continue;
     }
-    if (!res.ok) throw new Error(`API エラー ${res.status}: ${await res.text()}`);
+
+    if (res.status === 429 || res.status >= 500) {
+      sawBusy = true;
+      lastError = `HTTP ${res.status}`;
+      console.log(`  ${model}: ${res.status}（混雑）。${(WAIT_UNIT * attempt) / 1000}秒待ちます (${attempt}/3)`);
+      await sleep(WAIT_UNIT * attempt);
+      continue;
+    }
+
+    if (!res.ok) {
+      lastError = `HTTP ${res.status}: ${(await res.text()).slice(0, 300)}`;
+      console.log(`  ${model}: 使えません（${lastError}）`);
+      return null;
+    }
+
     const data = await res.json();
     const text = (data.candidates?.[0]?.content?.parts || []).map((p) => p.text || "").join("");
-    if (!text) throw new Error("空の応答が返りました");
+    if (!text) {
+      lastError = "空の応答";
+      console.log(`  ${model}: 空の応答が返りました`);
+      return null;
+    }
     return JSON.parse(text.replace(/^```(?:json)?|```$/g, "").trim());
   }
-  throw new Error("再試行の上限に達しました");
+  console.log(`  ${model}: 混雑が続くため、次のモデルに切り替えます`);
+  return null;
 }
 
-const model = await pickModel();
-console.log(`使用モデル: ${model}`);
-const article = await generate(model);
+const models = await pickModels();
+console.log(`モデル候補: ${models.join(" → ")}`);
+
+let article = null;
+let usedModel = null;
+for (const m of models) {
+  console.log(`${m} で書いてみます...`);
+  article = await callModel(m);
+  if (article) {
+    usedModel = m;
+    break;
+  }
+}
+
+if (!article) {
+  if (sawBusy) {
+    console.log(`\nどのモデルも混雑していて書けませんでした（${lastError}）。`);
+    console.log("Google側の一時的な混雑です。次回の実行で自動的に再挑戦します。");
+    process.exit(0);
+  }
+  console.error(`\n記事を生成できませんでした: ${lastError}`);
+  process.exit(1);
+}
+
+console.log(`書けました（使用モデル: ${usedModel}）`);
 
 // --- 後処理と保存 -----------------------------------------------------------
 let body = String(article.body_markdown || "")
