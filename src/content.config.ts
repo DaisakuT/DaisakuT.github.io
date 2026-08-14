@@ -11,6 +11,7 @@ const blog = defineCollection({
     sourceCount: z.number().optional(),
     sourceFrom: z.string().optional(),
     sourceTo: z.string().optional(),
+    heroImage: z.string().optional(),
   }),
 });
 
