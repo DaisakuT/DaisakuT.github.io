@@ -1,0 +1,66 @@
+name: 記事の自動生成
+
+on:
+  schedule:
+    # UTC表記です。0時UTC = 日本時間の朝9時。月曜と木曜に実行します。
+    - cron: "0 0 * * 1,4"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  write-article:
+    runs-on: ubuntu-latest
+    env:
+      # "true" にすると、確認なしで直接公開されます
+      DIRECT_PUSH: "false"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: SNS投稿データを整形
+        run: node scripts/normalize.mjs
+
+      - name: 記事を生成
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/generate.mjs
+
+      - name: 変更があるか確認
+        id: diff
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "生成された記事はありませんでした。"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: プルリクエストを作成
+        if: steps.diff.outputs.changed == 'true' && env.DIRECT_PUSH != 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: auto/article-${{ github.run_number }}
+          commit-message: "記事を追加"
+          title: "新しい記事ができました（#${{ github.run_number }}）"
+          body: |
+            自動生成された記事です。確認するポイント:
+            - 事実と違うことが書かれていないか
+            - 体験談の部分が自分の記憶と合っているか
+            問題なければ Merge を押すと公開されます。
+          delete-branch: true
+
+      - name: 直接公開（DIRECT_PUSH が true のとき）
+        if: steps.diff.outputs.changed == 'true' && env.DIRECT_PUSH == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "記事を追加"
+          git push
