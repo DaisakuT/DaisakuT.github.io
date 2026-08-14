@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = (d) => new Date(d).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base title={post.data.title} description={post.data.description} article={true}>
+  <article class="wrap article">
+    <header class="article__head">
+      <span class="article__meta">{fmt(post.data.pubDate)}</span>
+      <h1 class="article__title">{post.data.title}</h1>
+      {post.data.sourceCount && (
+        <span class="article__meta">
+          {post.data.sourceFrom?.slice(0, 7)} 〜 {post.data.sourceTo?.slice(0, 7)} の記録 {post.data.sourceCount} 件をもとに書いています
+        </span>
+      )}
+    </header>
+
+    <div class="ad-slot"><!-- 広告枠（記事上） --></div>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <div class="ad-slot"><!-- 広告枠（記事下） --></div>
+
+    <p style="margin-top:3rem"><a href="/">記事一覧に戻る</a></p>
+  </article>
+</Base>

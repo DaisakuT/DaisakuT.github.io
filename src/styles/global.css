@@ -1,0 +1,107 @@
+/* ------------------------------------------------------------------
+   配色: 桜島の灰（ash）を地に、水風呂の藍（mizu）を主役、
+   温泉の硫黄（iou）を「記録の帯」だけに使う
+   ------------------------------------------------------------------ */
+:root {
+  --ink: #10171c;
+  --ink-soft: #46545c;
+  --paper: #f2f4f3;
+  --paper-raised: #ffffff;
+  --mizu: #14495b;
+  --mizu-bright: #1d6e88;
+  --iou: #d9a227;
+  --haze: #cdd5d6;
+
+  --font-display: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  --font-body: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+  --font-util: ui-monospace, "SFMono-Regular", "Menlo", monospace;
+
+  --measure: 34rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt" 1;
+}
+
+a { color: var(--mizu); text-underline-offset: 0.25em; }
+a:hover { color: var(--mizu-bright); }
+:focus-visible { outline: 2px solid var(--iou); outline-offset: 3px; }
+
+.wrap { width: min(100% - 2.5rem, 46rem); margin-inline: auto; }
+
+/* ---------- ヘッダー ---------- */
+.masthead { border-bottom: 1px solid var(--haze); background: var(--paper-raised); }
+.masthead__inner { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; align-items: baseline; padding: 1.5rem 0 1.25rem; }
+.masthead__title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; letter-spacing: 0.12em; margin: 0; }
+.masthead__title a { color: var(--ink); text-decoration: none; }
+.masthead__tagline { font-family: var(--font-util); font-size: 0.7rem; letter-spacing: 0.14em; color: var(--ink-soft); text-transform: uppercase; }
+.nav { margin-left: auto; display: flex; gap: 1.25rem; font-size: 0.82rem; }
+.nav a { color: var(--ink-soft); text-decoration: none; }
+.nav a:hover { color: var(--mizu); text-decoration: underline; }
+
+/* ---------- トップの導入 ---------- */
+.intro { padding: 3.5rem 0 2.5rem; border-bottom: 1px solid var(--haze); }
+.intro__lede { font-family: var(--font-display); font-size: clamp(1.35rem, 4.5vw, 2rem); line-height: 1.7; margin: 0 0 1.25rem; }
+.intro__note { max-width: var(--measure); color: var(--ink-soft); font-size: 0.92rem; margin: 0; }
+.intro__stat { font-family: var(--font-util); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--ink-soft); margin-top: 1.75rem; }
+
+/* ---------- 記事一覧 ---------- */
+.list { list-style: none; margin: 0; padding: 0; }
+.entry { padding: 2rem 0; border-bottom: 1px solid var(--haze); }
+.entry__date { font-family: var(--font-util); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--ink-soft); }
+.entry__title { font-family: var(--font-display); font-size: 1.28rem; line-height: 1.6; margin: 0.35rem 0 0.5rem; font-weight: 600; }
+.entry__title a { color: var(--ink); text-decoration: none; }
+.entry__title a:hover { color: var(--mizu); text-decoration: underline; }
+.entry__desc { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+
+/* ---------- 記録の帯（このサイトの署名）---------- */
+.record { margin-top: 1.1rem; }
+.record__track { position: relative; height: 5px; background: var(--haze); border-radius: 3px; overflow: hidden; }
+.record__span { position: absolute; top: 0; bottom: 0; background: var(--iou); border-radius: 3px; }
+.record__label { display: block; margin-top: 0.45rem; font-family: var(--font-util); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--ink-soft); }
+
+/* ---------- 記事ページ ---------- */
+.article { padding: 3rem 0 4rem; }
+.article__head { border-bottom: 2px solid var(--mizu); padding-bottom: 1.75rem; margin-bottom: 2.5rem; }
+.article__title { font-family: var(--font-display); font-size: clamp(1.6rem, 5.5vw, 2.15rem); line-height: 1.55; margin: 0.5rem 0 0.75rem; font-weight: 600; }
+.article__meta { font-family: var(--font-util); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--ink-soft); }
+
+.prose { max-width: var(--measure); }
+.prose h2 {
+  font-family: var(--font-display); font-size: 1.32rem; line-height: 1.6;
+  margin: 3rem 0 1rem; padding-left: 0.85rem; border-left: 4px solid var(--mizu);
+}
+.prose h3 { font-family: var(--font-display); font-size: 1.1rem; margin: 2.25rem 0 0.75rem; }
+.prose p { margin: 0 0 1.5rem; }
+.prose ul, .prose ol { margin: 0 0 1.5rem; padding-left: 1.4rem; }
+.prose li { margin-bottom: 0.5rem; }
+.prose img { max-width: 100%; height: auto; }
+.prose blockquote { margin: 0 0 1.5rem; padding: 0.25rem 0 0.25rem 1.1rem; border-left: 3px solid var(--haze); color: var(--ink-soft); }
+.prose table { width: 100%; border-collapse: collapse; margin: 0 0 1.75rem; font-size: 0.9rem; }
+.prose th, .prose td { border-bottom: 1px solid var(--haze); padding: 0.7rem 0.6rem; text-align: left; vertical-align: top; }
+.prose th { background: var(--paper-raised); font-weight: 600; }
+.prose hr { border: 0; border-top: 1px solid var(--haze); margin: 3rem 0; }
+.prose code { font-family: var(--font-util); font-size: 0.88em; background: var(--paper-raised); padding: 0.1em 0.35em; }
+
+/* 広告枠（アドセンス合格後にここへコードを入れる） */
+.ad-slot { margin: 3rem 0; min-height: 1px; }
+
+/* ---------- フッター ---------- */
+.footer { border-top: 1px solid var(--haze); background: var(--paper-raised); padding: 2.5rem 0; margin-top: 3rem; }
+.footer__inner { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; font-size: 0.8rem; color: var(--ink-soft); }
+.footer a { color: var(--ink-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,225 @@
+// keywords.txt の上から1つキーワードを取り、
+// data/posts.json の中から関連する「自分の実体験」を拾い集めて、
+// それを織り込んだ記事を1本書き出します。
+//
+// 使い方: GEMINI_API_KEY=xxxx node scripts/generate.mjs
+
+import fs from "node:fs";
+import path from "node:path";
+
+const API_KEY = process.env.GEMINI_API_KEY;
+const POSTS_FILE = process.env.POSTS_FILE || "data/posts.json";
+const KEYWORDS_FILE = process.env.KEYWORDS_FILE || "keywords.txt";
+const STATE_FILE = process.env.STATE_FILE || "data/state.json";
+const CONTENT_DIR = process.env.CONTENT_DIR || "src/content/blog";
+const MAX_REFS = Number(process.env.MAX_REFS || 14); // 1記事に渡す体験メモの上限
+const MIN_REFS = Number(process.env.MIN_REFS || 3); // これ未満なら書かずに次のキーワードへ
+const SITE_AUTHOR = process.env.SITE_AUTHOR || "鹿児島在住のブログ運営者";
+
+if (!API_KEY) {
+  console.error("GEMINI_API_KEY が設定されていません。リポジトリの Settings → Secrets から登録してください。");
+  process.exit(1);
+}
+
+const read = (f, fallback) => (fs.existsSync(f) ? fs.readFileSync(f, "utf8") : fallback);
+const posts = JSON.parse(read(POSTS_FILE, "[]"));
+const state = JSON.parse(read(STATE_FILE, '{"done":[],"skipped":[]}'));
+
+if (!posts.length) {
+  console.log("投稿データが空です。data/raw/ にSNSのエクスポート（JSON）を置いてください。");
+  process.exit(0);
+}
+
+// --- キーワードを読む -------------------------------------------------------
+const keywords = read(KEYWORDS_FILE, "")
+  .split("\n")
+  .map((l) => l.trim())
+  .filter((l) => l && !l.startsWith("#"))
+  .map((line) => {
+    const [keyword, category = "", related = ""] = line.split("|").map((s) => s.trim());
+    return {
+      keyword,
+      category,
+      terms: [...new Set([...keyword.split(/\s+/), ...related.split(",")].map((t) => t.trim()).filter(Boolean))],
+    };
+  });
+
+const doneKeywords = new Set([...state.done, ...state.skipped].map((d) => d.keyword));
+
+// --- 関連する体験を探す -----------------------------------------------------
+function findExperiences(entry) {
+  return posts
+    .map((p) => {
+      let score = 0;
+      for (const term of entry.terms) {
+        if (term.length < 2) continue;
+        const hits = p.text.split(term).length - 1;
+        if (hits) score += Math.min(hits, 3) * (term.length >= 3 ? 2 : 1);
+      }
+      // 短すぎる投稿より、ある程度書き込まれた投稿を優先
+      if (p.text.length > 120) score += 1;
+      return { ...p, score };
+    })
+    .filter((p) => p.score >= 2)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, MAX_REFS)
+    .sort((a, b) => (a.date < b.date ? -1 : 1)); // 時系列に並べ直す
+}
+
+let target = null;
+let refs = [];
+for (const entry of keywords) {
+  if (doneKeywords.has(entry.keyword)) continue;
+  const found = findExperiences(entry);
+  if (found.length < MIN_REFS) {
+    console.log(`スキップ: 「${entry.keyword}」に紐づく体験が ${found.length} 件しかありません`);
+    state.skipped.push({ keyword: entry.keyword, reason: "体験不足", found: found.length });
+    continue;
+  }
+  target = entry;
+  refs = found;
+  break;
+}
+
+if (!target) {
+  console.log("書けるキーワードが残っていません。keywords.txt に追加してください。");
+  fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 1), "utf8");
+  process.exit(0);
+}
+
+console.log(`キーワード: ${target.keyword}`);
+console.log(`参照する自分の投稿: ${refs.length} 件`);
+
+// --- 使うモデルを自動で選ぶ（モデル名の改廃に追従するため）------------------
+async function pickModel() {
+  if (process.env.GEMINI_MODEL) return process.env.GEMINI_MODEL;
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`);
+    const { models = [] } = await res.json();
+    const candidates = models
+      .filter((m) => (m.supportedGenerationMethods || []).includes("generateContent"))
+      .map((m) => m.name.replace("models/", ""))
+      .filter((n) => n.includes("flash") && !/(lite|image|tts|embedding|live|preview|exp)/.test(n));
+    candidates.sort((a, b) => {
+      const v = (s) => parseFloat((s.match(/gemini-(\d+(?:\.\d+)?)/) || [0, 0])[1]);
+      return v(b) - v(a);
+    });
+    if (candidates[0]) return candidates[0];
+  } catch {
+    /* noop */
+  }
+  return "gemini-2.5-flash";
+}
+
+// --- プロンプト -------------------------------------------------------------
+const experienceBlock = refs
+  .map((r) => `- [${r.date} / ${r.platform}] ${r.text.replace(/\n/g, " ")}`)
+  .join("\n");
+
+const prompt = `あなたは、${SITE_AUTHOR}本人として記事を書きます。以下の「実体験メモ」は、この人が実際にSNSに投稿した記録です。
+
+# 今回書く記事
+メインキーワード: ${target.keyword}
+カテゴリ: ${target.category}
+
+# 実体験メモ（この人が実際に体験したこと）
+${experienceBlock}
+
+# 絶対に守ること
+1. 実体験メモの内容を、記事の中に最低3箇所、具体的に織り込むこと。「実際に行ったときは〜」「私の場合は〜」のように、体験として書く。
+2. 実体験メモに書かれていない固有名詞・店名・施設名・数値を、体験として書いてはいけない。捏造は厳禁。一般論として書く場合は「一般的には」と明示する。
+3. URLや外部リンクを一切書かないこと。
+4. 健康効果・医学的効果を断定しない（「必ず痩せる」「不眠が治る」などは禁止）。「日本一」「絶対」などの根拠のない最上級表現も使わない。
+5. 絵文字は使わない。文体は「です・ます」。誠実、簡潔、誇張しない。数字は半角。
+
+# 構成
+- リード文: 結論ファーストで3〜5文。検索した人が知りたい答えを最初に出す。
+- H2見出しを4〜6個。必要ならH3。各H2の直下は結論から書き、その後に理由・詳細。
+- 比較・手順・選び方は表や箇条書きを使う。
+- 「よくある質問」セクションを3〜5問。
+- 最後に短いまとめ。
+- 全体で2,500〜3,500字程度。水増ししない。
+
+# 出力形式
+次のキーのJSONのみを返すこと。前後に説明文やコードブロックの記号を付けない。
+{
+  "title": "SEOタイトル。32文字前後。キーワードを前方に置く",
+  "description": "メタディスクリプション。120文字前後。結論と読む理由",
+  "slug": "英小文字とハイフンのみのURLスラッグ",
+  "body_markdown": "# は使わず、## から始まる記事本文のMarkdown"
+}`;
+
+// --- 生成 -------------------------------------------------------------------
+async function generate(model) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0.85, maxOutputTokens: 8192, responseMimeType: "application/json" },
+      }),
+    });
+    if (res.status === 429 || res.status >= 500) {
+      const wait = attempt * 20000;
+      console.log(`${res.status} が返りました。${wait / 1000}秒待って再試行します (${attempt}/4)`);
+      await new Promise((r) => setTimeout(r, wait));
+      continue;
+    }
+    if (!res.ok) throw new Error(`API エラー ${res.status}: ${await res.text()}`);
+    const data = await res.json();
+    const text = (data.candidates?.[0]?.content?.parts || []).map((p) => p.text || "").join("");
+    if (!text) throw new Error("空の応答が返りました");
+    return JSON.parse(text.replace(/^```(?:json)?|```$/g, "").trim());
+  }
+  throw new Error("再試行の上限に達しました");
+}
+
+const model = await pickModel();
+console.log(`使用モデル: ${model}`);
+const article = await generate(model);
+
+// --- 後処理と保存 -----------------------------------------------------------
+let body = String(article.body_markdown || "")
+  .replace(/\[([^\]]+)\]\(https?:\/\/[^)]+\)/g, "$1") // 外部リンクが混ざったら文字だけ残す
+  .replace(/https?:\/\/\S+/g, "")
+  .trim();
+
+const refNote = refs.map((r) => `- ${r.date}（${r.platform}）`).join("\n");
+body += `\n\n---\n\n### この記事のもとになった記録\n\n実際の投稿・記録をもとに書いています。\n\n${refNote}\n`;
+
+const esc = (s) => String(s).replace(/'/g, "''").replace(/\n/g, " ").trim();
+let slug = String(article.slug || target.keyword)
+  .toLowerCase()
+  .replace(/[^a-z0-9-]+/g, "-")
+  .replace(/^-+|-+$/g, "")
+  .slice(0, 60);
+if (!slug) slug = `post-${Date.now()}`;
+
+fs.mkdirSync(CONTENT_DIR, { recursive: true });
+let file = path.join(CONTENT_DIR, `${slug}.md`);
+let n = 2;
+while (fs.existsSync(file)) file = path.join(CONTENT_DIR, `${slug}-${n++}.md`);
+
+const today = new Date().toISOString().slice(0, 10);
+const frontmatter = `---
+title: '${esc(article.title)}'
+description: '${esc(article.description)}'
+pubDate: '${today}'
+sourceCount: ${refs.length}
+sourceFrom: '${refs[0].date}'
+sourceTo: '${refs.at(-1).date}'
+---
+
+`;
+
+fs.writeFileSync(file, frontmatter + body + "\n", "utf8");
+
+state.done.push({ keyword: target.keyword, slug, date: today, refs: refs.length });
+fs.mkdirSync(path.dirname(STATE_FILE), { recursive: true });
+fs.writeFileSync(STATE_FILE, JSON.stringify(state, null, 1), "utf8");
+
+console.log(`\n記事を書き出しました: ${file}`);
+console.log(`タイトル: ${article.title}`);
+console.log(`文字数: 約${body.length}字`);

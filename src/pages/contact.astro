@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="お問い合わせ" description="お問い合わせはこちらのフォームからお送りください。">
+  <div class="wrap article">
+    <header class="article__head">
+      <h1 class="article__title">お問い合わせ</h1>
+    </header>
+    <div class="prose">
+      <p>ご用件は下のフォームからお送りください。数日以内に返信します。</p>
+
+      <!--
+        ここに Google フォームの埋め込みコードを貼ってください。
+        取得方法: Googleフォームで「送信」→「< >」タブ→ 表示されたHTMLをコピー
+        貼り付けたら、下の <p> の案内文は消してください。
+      -->
+      <p style="padding:2rem;border:1px dashed var(--haze);text-align:center;color:var(--ink-soft)">
+        （ここに Google フォームを埋め込みます）
+      </p>
+    </div>
+  </div>
+</Base>

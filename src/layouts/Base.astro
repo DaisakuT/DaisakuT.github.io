@@ -1,0 +1,53 @@
+---
+import { SITE } from '../site.ts';
+import '../styles/global.css';
+
+const { title, description, article = false } = Astro.props;
+const pageTitle = title ? `${title} | ${SITE.title}` : `${SITE.title} — ${SITE.tagline}`;
+const pageDesc = description || SITE.description;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:url" content={canonical} />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <!-- アドセンス合格後、ここに審査コードを貼ります -->
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="wrap masthead__inner">
+        <p class="masthead__title"><a href="/">{SITE.title}</a></p>
+        <span class="masthead__tagline">{SITE.tagline}</span>
+        <nav class="nav">
+          <a href="/">記事</a>
+          <a href="/about/">運営者</a>
+          <a href="/contact/">お問い合わせ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <span>&copy; {new Date().getFullYear()} {SITE.title}</span>
+        <a href="/privacy/">プライバシーポリシー</a>
+        <a href="/contact/">お問い合わせ</a>
+        <a href="/rss.xml">RSS</a>
+      </div>
+    </footer>
+  </body>
+</html>

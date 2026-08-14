@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site.ts';
+---
+<Base title="運営者について" description="このサイトの運営者と、書いている内容についてのご説明です。">
+  <div class="wrap article">
+    <header class="article__head">
+      <h1 class="article__title">運営者について</h1>
+    </header>
+    <div class="prose">
+      <h2>このサイトについて</h2>
+      <p>{SITE.description}</p>
+      <p>
+        記事の内容は、運営者が実際に訪れた場所・食べたもの・体験したことの記録をもとにしています。
+        記録に残っていないことは、一般的な情報として区別して書くようにしています。
+      </p>
+
+      <h2>運営者</h2>
+      <ul>
+        <li>名前: {SITE.author}</li>
+        <li>拠点: 鹿児島県</li>
+        <li>書いていること: サウナ、食べもの、旅</li>
+      </ul>
+
+      <h2>ご連絡</h2>
+      <p>取材・掲載・訂正のご依頼は<a href="/contact/">お問い合わせ</a>からお願いします。</p>
+    </div>
+  </div>
+</Base>
