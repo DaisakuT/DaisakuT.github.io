@@ -71,8 +71,14 @@ a:hover { color: var(--mizu-bright); }
 .record__span { position: absolute; top: 0; bottom: 0; background: var(--iou); border-radius: 3px; }
 .record__label { display: block; margin-top: 0.45rem; font-family: var(--font-util); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--ink-soft); }
 
+/* ---------- アイキャッチの図解 ---------- */
+.hero {
+  display: block; width: 100%; height: auto; margin: 0 0 2rem;
+  border: 1px solid var(--haze); border-radius: 3px; background: var(--paper-raised);
+}
+
 /* ---------- 記事ページ ---------- */
-.article { padding: 3rem 0 4rem; }
+.article { padding: 2.5rem 0 4rem; }
 .article__head { border-bottom: 2px solid var(--mizu); padding-bottom: 1.75rem; margin-bottom: 2.5rem; }
 .article__title { font-family: var(--font-display); font-size: clamp(1.6rem, 5.5vw, 2.15rem); line-height: 1.55; margin: 0.5rem 0 0.75rem; font-weight: 600; }
 .article__meta { font-family: var(--font-util); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--ink-soft); }
