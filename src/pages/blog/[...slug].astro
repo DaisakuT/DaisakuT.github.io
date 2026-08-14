@@ -14,12 +14,15 @@ const fmt = (d) => new Date(d).toLocaleDateString('ja-JP', { year: 'numeric', mo
 
 <Base title={post.data.title} description={post.data.description} article={true}>
   <article class="wrap article">
+    {post.data.heroImage && (
+      <img class="hero" src={post.data.heroImage} alt="" width="1200" height="500" loading="eager" />
+    )}
     <header class="article__head">
       <span class="article__meta">{fmt(post.data.pubDate)}</span>
       <h1 class="article__title">{post.data.title}</h1>
-      {post.data.sourceCount && (
+      {post.data.sourceFrom && (
         <span class="article__meta">
-          {post.data.sourceFrom?.slice(0, 7)} 〜 {post.data.sourceTo?.slice(0, 7)} の記録 {post.data.sourceCount} 件をもとに書いています
+          {post.data.sourceFrom.slice(0, 4)}年から{post.data.sourceTo?.slice(0, 4)}年までの記録をもとに書いています
         </span>
       )}
     </header>
