@@ -2,28 +2,56 @@
 import Base from '../layouts/Base.astro';
 import { SITE } from '../site.ts';
 ---
-<Base title="運営者について" description="このサイトの運営者と、書いている内容についてのご説明です。">
+<Base title="運営者について" description="このサイトの運営者と、記事の書き方についてのご説明です。">
   <div class="wrap article">
     <header class="article__head">
       <h1 class="article__title">運営者について</h1>
     </header>
     <div class="prose">
+      <h2>寺師 大策（てらし だいさく）</h2>
+      <p>
+        鹿児島県鹿児島市在住。照株式会社 代表として、サウナコンサルティングと
+        メディア出演・番組企画を手がけています。
+      </p>
+      <p>
+        サウナは仕事であり、日課でもあります。県内外の施設に通いながら、
+        入り方や体調の変化を記録し続けてきました。このサイトの記事は、その記録がもとになっています。
+      </p>
+
       <h2>このサイトについて</h2>
       <p>{SITE.description}</p>
       <p>
-        記事の内容は、運営者が実際に訪れた場所・食べたもの・体験したことの記録をもとにしています。
-        記録に残っていないことは、一般的な情報として区別して書くようにしています。
+        書いているのは、サウナ・食べもの・旅の3つです。どれも実際に足を運び、
+        食べ、試したことを軸にしています。記録に残っていないことは、
+        一般的な情報として区別して書くようにしています。
       </p>
 
-      <h2>運営者</h2>
+      <h2>肉の寺師との関係</h2>
+      <p>
+        記事の中で紹介している「肉の寺師」は、1984年に寺師牧場精肉店として創業した
+        私の家業です。もつ鍋や鹿児島うんまか豚について書いた記事から
+        商品ページへリンクしている場合があります。
+      </p>
+      <p>
+        関係者だからこそ書けることがある一方、身内である以上、
+        評価が甘くなりうることも承知しています。そのため関係性はこのページで明示し、
+        商品を紹介する記事にもその旨を記載しています。
+      </p>
+
+      <h2>関連するサイト</h2>
       <ul>
-        <li>名前: {SITE.author}</li>
-        <li>拠点: 鹿児島県</li>
-        <li>書いていること: サウナ、食べもの、旅</li>
+        <li><a href="https://telass.jp/" target="_blank" rel="noopener">照株式会社（サウナコンサルティング・メディア出演）</a></li>
+        <li><a href="https://www.terashi-kagoshima.com" target="_blank" rel="noopener">肉の寺師（寺師のもつ鍋・鹿児島うんまか豚）</a></li>
+      </ul>
+
+      <h2>SNS</h2>
+      <ul>
+        <li><a href="https://www.instagram.com/daisaku.terashi" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://x.com/Satsummer099" target="_blank" rel="noopener">X（旧Twitter）</a></li>
       </ul>
 
       <h2>ご連絡</h2>
-      <p>取材・掲載・訂正のご依頼は<a href="/contact/">お問い合わせ</a>からお願いします。</p>
+      <p>取材・掲載・記事内容の訂正などのご依頼は、<a href="/contact/">お問い合わせ</a>からお願いします。</p>
     </div>
   </div>
 </Base>
