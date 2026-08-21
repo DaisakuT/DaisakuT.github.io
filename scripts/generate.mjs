@@ -334,6 +334,68 @@ let body = String(article.body_markdown || "")
   .replace(/https?:\/\/\S+/g, "")
   .trim();
 
+// --- 肉の寺師へのリンクを挿入 ------------------------------------------------
+// shop.json の match に当てはまる記事にだけ、店舗ページへのリンクを差し込みます。
+// 当てはまらない記事には何も入りません。
+const SHOP_FILE = process.env.SHOP_FILE || "shop.json";
+
+function buildShopBlock(keyword, title, bodyText) {
+  let conf;
+  try {
+    conf = JSON.parse(read(SHOP_FILE, "{}"));
+  } catch {
+    console.log("shop.json を読めませんでした。リンクなしで進めます");
+    return null;
+  }
+  if (!conf.enabled) return null;
+
+  const items = (conf.items || []).filter((it) => it.url);
+  if (!items.length) return null;
+
+  // 記事に一番合う商品グループを1つだけ選ぶ
+  const scored = items
+    .map((it) => {
+      let score = 0;
+      for (const term of it.match || []) {
+        if (term.length < 2) continue;
+        if (keyword.includes(term)) score += 5;
+        if (title.includes(term)) score += 3;
+        score += Math.min(bodyText.split(term).length - 1, 4);
+      }
+      return { ...it, score };
+    })
+    .sort((a, b) => b.score - a.score);
+
+  const best = scored[0];
+  if (!best || best.score < (conf.minScore ?? 5)) return null;
+
+  const parts = [`## ${best.heading || conf.shopName || "この記事に出てくるもの"}`];
+  if (best.comment) parts.push(best.comment);
+  parts.push(`[${best.linkText || conf.shopName}](${best.url})`);
+
+  return {
+    block: `\n\n${parts.join("\n\n")}\n`,
+    disclosure: conf.disclosure || "",
+    name: best.name,
+    score: best.score,
+  };
+}
+
+const shopLink = buildShopBlock(target.keyword, article.title || "", body);
+if (shopLink) {
+  const summaryIdx = body.search(/\n##\s*(まとめ|おわりに|さいごに|最後に)/);
+  body =
+    summaryIdx === -1
+      ? body + shopLink.block
+      : body.slice(0, summaryIdx) + shopLink.block + body.slice(summaryIdx);
+
+  if (shopLink.disclosure) body = `*${shopLink.disclosure}*\n\n${body}`;
+  console.log(`店舗リンクを挿入しました: ${shopLink.name}（関連度: ${shopLink.score}）`);
+} else {
+  console.log("店舗リンクの対象外の記事です");
+}
+
+
 const esc = (s) => String(s).replace(/'/g, "''").replace(/\n/g, " ").trim();
 const today = new Date().toISOString().slice(0, 10);
 const frontmatter = `---
