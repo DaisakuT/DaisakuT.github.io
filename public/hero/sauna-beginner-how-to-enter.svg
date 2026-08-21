@@ -1,0 +1,59 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- 循環ガイドライン（下部ループ） -->
+  <path d="M 950 310 C 950 430, 250 430, 250 310" fill="none" stroke="#CDD5D6" stroke-width="4" stroke-dasharray="8 8"/>
+  <polygon points="250,300 242,318 258,318" fill="#CDD5D6"/>
+
+  <!-- ステップ接続矢印 -->
+  <line x1="365" y1="210" x2="470" y2="210" stroke="#CDD5D6" stroke-width="4"/>
+  <polygon points="485,210 465,200 465,220" fill="#CDD5D6"/>
+
+  <line x1="715" y1="210" x2="820" y2="210" stroke="#CDD5D6" stroke-width="4"/>
+  <polygon points="835,210 815,200 815,220" fill="#CDD5D6"/>
+
+  <!-- STEP 1: サウナ（熱・上昇） -->
+  <g transform="translate(250, 210)">
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#CDD5D6" stroke-width="2"/>
+    <circle cx="0" cy="0" r="76" fill="#14495B"/>
+    
+    <!-- 幾何学的な熱・蒸気の上昇モチーフ -->
+    <path d="M -30 35 L 0 -25 L 30 35 Z" fill="#D9A227"/>
+    <path d="M -15 35 L 0 5 L 15 35 Z" fill="#F2F4F3"/>
+    <circle cx="0" cy="-42" r="6" fill="#D9A227"/>
+    <circle cx="-24" cy="-30" r="4" fill="#D9A227"/>
+    <circle cx="24" cy="-30" r="4" fill="#D9A227"/>
+  </g>
+
+  <!-- STEP 2: 水風呂（冷却・収縮・波紋） -->
+  <g transform="translate(600, 210)">
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#CDD5D6" stroke-width="2"/>
+    <circle cx="0" cy="0" r="76" fill="#14495B"/>
+    
+    <!-- 幾何学的な冷却・水滴・下降モチーフ -->
+    <circle cx="0" cy="0" r="52" fill="none" stroke="#CDD5D6" stroke-width="3"/>
+    <circle cx="0" cy="0" r="34" fill="none" stroke="#F2F4F3" stroke-width="3"/>
+    <rect x="-14" y="-14" width="28" height="28" fill="#CDD5D6" transform="rotate(45)"/>
+    <circle cx="0" cy="0" r="6" fill="#14495B"/>
+  </g>
+
+  <!-- STEP 3: 外気浴（調和・開放・ととのい） -->
+  <g transform="translate(950, 210)">
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#CDD5D6" stroke-width="2"/>
+    <circle cx="0" cy="0" r="76" fill="#14495B"/>
+    
+    <!-- 幾何学的な調和・放射モチーフ -->
+    <circle cx="0" cy="0" r="48" fill="#D9A227"/>
+    <circle cx="-20" cy="0" r="28" fill="none" stroke="#F2F4F3" stroke-width="2"/>
+    <circle cx="20" cy="0" r="28" fill="none" stroke="#F2F4F3" stroke-width="2"/>
+    <circle cx="0" cy="-20" r="28" fill="none" stroke="#F2F4F3" stroke-width="2"/>
+    <circle cx="0" cy="20" r="28" fill="none" stroke="#F2F4F3" stroke-width="2"/>
+    <circle cx="0" cy="0" r="10" fill="#14495B"/>
+  </g>
+
+  <!-- ラベル（合計9文字） -->
+  <text x="250" y="355" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C" text-anchor="middle" letter-spacing="2">サウナ</text>
+  <text x="600" y="355" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C" text-anchor="middle" letter-spacing="2">水風呂</text>
+  <text x="950" y="355" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C" text-anchor="middle" letter-spacing="2">外気浴</text>
+</svg>
