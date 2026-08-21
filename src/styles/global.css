@@ -103,6 +103,35 @@ a:hover { color: var(--mizu-bright); }
 /* 広告枠（アドセンス合格後にここへコードを入れる） */
 .ad-slot { margin: 3rem 0; min-height: 1px; }
 
+/* ---------- ボタン ---------- */
+.button {
+  display: inline-block; padding: 0.85rem 1.6rem;
+  background: var(--mizu); color: var(--paper-raised);
+  text-decoration: none; border-radius: 3px;
+  font-size: 0.95rem; letter-spacing: 0.04em;
+}
+.button:hover { background: var(--mizu-bright); color: var(--paper-raised); }
+
+/* ---------- お問い合わせフォーム ---------- */
+.form { max-width: var(--measure); margin: 2rem 0 3rem; }
+.form__row { display: block; margin-bottom: 1.5rem; }
+.form__label { display: block; font-size: 0.88rem; margin-bottom: 0.45rem; }
+.form__label em {
+  font-style: normal; font-size: 0.7rem; letter-spacing: 0.08em;
+  color: var(--mizu); border: 1px solid var(--mizu);
+  padding: 0.1em 0.4em; margin-left: 0.5em; border-radius: 2px;
+}
+.form__input {
+  width: 100%; padding: 0.75rem 0.85rem;
+  border: 1px solid var(--haze); border-radius: 3px;
+  background: var(--paper-raised); color: var(--ink);
+  font-family: inherit; font-size: 1rem; line-height: 1.7;
+}
+.form__input:focus { border-color: var(--mizu); outline: 2px solid var(--iou); outline-offset: 1px; }
+textarea.form__input { resize: vertical; }
+.form__trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form button { border: 0; cursor: pointer; font-family: inherit; }
+
 /* ---------- フッター ---------- */
 .footer { border-top: 1px solid var(--haze); background: var(--paper-raised); padding: 2.5rem 0; margin-top: 3rem; }
 .footer__inner { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; font-size: 0.8rem; color: var(--ink-soft); }
