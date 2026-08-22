@@ -44,6 +44,14 @@ const keywords = read(KEYWORDS_FILE, "")
     };
   });
 
+// keywords.txt の「A サウナ」「C 食事」などの表記を、サイトのカテゴリー名に変換
+function toSiteCategory(raw = "") {
+  if (raw.includes("サウナ")) return "サウナ";
+  if (raw.includes("食")) return "食";
+  if (raw.includes("旅")) return "旅";
+  return "";
+}
+
 const doneKeywords = new Set([...state.done, ...state.skipped].map((d) => d.keyword));
 
 // --- 関連する体験を探す -----------------------------------------------------
@@ -402,9 +410,11 @@ const frontmatter = `---
 title: '${esc(article.title)}'
 description: '${esc(article.description)}'
 pubDate: '${today}'
+category: '${toSiteCategory(target.category)}'
 sourceCount: ${refs.length}
 sourceFrom: '${refs[0].date}'
-sourceTo: '${refs.at(-1).date}'${heroPath ? `\nheroImage: '${heroPath}'` : ""}
+sourceTo: '${refs.at(-1).date}'${heroPath ? `
+heroImage: '${heroPath}'` : ""}
 ---
 
 `;

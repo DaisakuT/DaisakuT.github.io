@@ -1,24 +1,60 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { findByName } from '../../categories.ts';
+import { SITE } from '../../site.ts';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+  const posts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      newer: posts[i - 1] || null,
+      older: posts[i + 1] || null,
+      related: posts
+        .filter((p) => p.id !== post.id && p.data.category && p.data.category === post.data.category)
+        .slice(0, 3),
+    },
+  }));
 }
 
-const { post } = Astro.props;
+const { post, newer, older, related } = Astro.props;
 const { Content } = await render(post);
+const cat = findByName(post.data.category);
 const fmt = (d) => new Date(d).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  author: { '@type': 'Person', name: SITE.author },
+  publisher: { '@type': 'Organization', name: SITE.title },
+  mainEntityOfPage: new URL(`/blog/${post.id}/`, Astro.site).href,
+};
 ---
 
 <Base title={post.data.title} description={post.data.description} article={true}>
   <article class="wrap article">
+    <nav class="crumbs" aria-label="現在地">
+      <a href="/">記事</a>
+      {cat && <><span aria-hidden="true">›</span> <a href={`/category/${cat.slug}/`}>{cat.name}</a></>}
+    </nav>
+
     {post.data.heroImage && (
       <img class="hero" src={post.data.heroImage} alt="" width="1200" height="500" loading="eager" />
     )}
+
     <header class="article__head">
-      <span class="article__meta">{fmt(post.data.pubDate)}</span>
+      <div class="entry__meta">
+        <span class="article__meta">{fmt(post.data.pubDate)}</span>
+        {cat && <a class="tag" href={`/category/${cat.slug}/`}>{cat.name}</a>}
+      </div>
       <h1 class="article__title">{post.data.title}</h1>
       {post.data.sourceFrom && (
         <span class="article__meta">
@@ -35,6 +71,32 @@ const fmt = (d) => new Date(d).toLocaleDateString('ja-JP', { year: 'numeric', mo
 
     <div class="ad-slot"><!-- 広告枠（記事下） --></div>
 
-    <p style="margin-top:3rem"><a href="/">記事一覧に戻る</a></p>
+    {related.length > 0 && (
+      <section class="related">
+        <h2 class="related__head">{cat?.name}の記事をもっと読む</h2>
+        <ul class="related__list">
+          {related.map((p) => (
+            <li><a href={`/blog/${p.id}/`}>{p.data.title}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <nav class="adjacent" aria-label="前後の記事">
+      {older ? (
+        <a class="adjacent__item" href={`/blog/${older.id}/`}>
+          <span class="adjacent__label">前の記事</span>
+          <span class="adjacent__title">{older.data.title}</span>
+        </a>
+      ) : <span></span>}
+      {newer && (
+        <a class="adjacent__item adjacent__item--next" href={`/blog/${newer.id}/`}>
+          <span class="adjacent__label">次の記事</span>
+          <span class="adjacent__title">{newer.data.title}</span>
+        </a>
+      )}
+    </nav>
   </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </Base>

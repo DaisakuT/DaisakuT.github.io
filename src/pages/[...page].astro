@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import Pagination from '../components/Pagination.astro';
+import CategoryNav from '../components/CategoryNav.astro';
+import { SITE } from '../site.ts';
+
+export const PER_PAGE = 10; // 1ページあたりの記事数
+
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+  return paginate(posts, { pageSize: PER_PAGE });
+}
+
+const { page } = Astro.props;
+const isFirst = page.currentPage === 1;
+---
+
+<Base
+  title={isFirst ? undefined : `記事一覧 ${page.currentPage}ページ目`}
+  description={SITE.description}
+>
+  {isFirst && (
+    <section class="wrap intro">
+      <p class="intro__lede">{SITE.description}</p>
+      <p class="intro__note">
+        行った場所、食べたもの、そのとき考えたこと。書き残してきた記録を、あとから読み返せる形にまとめ直しています。
+      </p>
+    </section>
+  )}
+
+  <div class="wrap">
+    <CategoryNav />
+
+    {!isFirst && <h1 class="listhead">記事一覧<span class="listhead__sub">{page.currentPage} / {page.lastPage} ページ</span></h1>}
+
+    <PostList posts={page.data} />
+
+    {page.data.length === 0 && (
+      <p style="padding:3rem 0;">まだ記事がありません。Actions タブから「記事の自動生成」を実行すると、ここに並びます。</p>
+    )}
+
+    <Pagination page={page} />
+  </div>
+</Base>

@@ -1,0 +1,10 @@
+---
+import { CATEGORIES } from '../categories.ts';
+const { current } = Astro.props;
+---
+<nav class="cats" aria-label="カテゴリー">
+  <a class={`cats__item${!current ? ' is-current' : ''}`} href="/">すべて</a>
+  {CATEGORIES.map((c) => (
+    <a class={`cats__item${current === c.slug ? ' is-current' : ''}`} href={`/category/${c.slug}/`}>{c.name}</a>
+  ))}
+</nav>

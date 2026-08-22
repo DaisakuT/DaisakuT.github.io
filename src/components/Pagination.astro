@@ -1,0 +1,28 @@
+---
+const { page } = Astro.props;
+if (page.lastPage <= 1) return;
+// 現在地の前後2ページ分だけ番号を出す
+const nums = [];
+for (let i = 1; i <= page.lastPage; i++) {
+  if (i === 1 || i === page.lastPage || Math.abs(i - page.currentPage) <= 2) nums.push(i);
+}
+const href = (n) => (n === 1 ? page.url.first || '/' : `${(page.url.first || '/').replace(/\/$/, '')}/${n}/`);
+---
+<nav class="pager" aria-label="ページ送り">
+  {page.url.prev ? <a class="pager__arrow" href={page.url.prev} rel="prev">前へ</a> : <span class="pager__arrow is-off">前へ</span>}
+
+  <ol class="pager__nums">
+    {nums.map((n, i) => (
+      <>
+        {i > 0 && n - nums[i - 1] > 1 && <li class="pager__gap">…</li>}
+        <li>
+          {n === page.currentPage
+            ? <span class="pager__num is-current" aria-current="page">{n}</span>
+            : <a class="pager__num" href={href(n)}>{n}</a>}
+        </li>
+      </>
+    ))}
+  </ol>
+
+  {page.url.next ? <a class="pager__arrow" href={page.url.next} rel="next">次へ</a> : <span class="pager__arrow is-off">次へ</span>}
+</nav>

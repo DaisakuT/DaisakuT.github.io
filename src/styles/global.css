@@ -58,18 +58,99 @@ a:hover { color: var(--mizu-bright); }
 
 /* ---------- 記事一覧 ---------- */
 .list { list-style: none; margin: 0; padding: 0; }
-.entry { padding: 2rem 0; border-bottom: 1px solid var(--haze); }
+.entry {
+  display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem;
+  padding: 1.75rem 0; border-bottom: 1px solid var(--haze); align-items: start;
+}
+.entry__thumb {
+  display: block; overflow: hidden; border-radius: 3px;
+  border: 1px solid var(--haze); background: var(--paper-raised); line-height: 0;
+}
+.entry__thumb img { width: 100%; height: auto; aspect-ratio: 12 / 5; object-fit: cover; display: block; }
+.entry__thumb-blank {
+  display: flex; align-items: center; justify-content: center;
+  aspect-ratio: 12 / 5; font-family: var(--font-display); font-size: 1rem;
+  letter-spacing: 0.2em; color: var(--haze); line-height: 1;
+}
+.entry__body { min-width: 0; }
+.entry__meta { display: flex; align-items: center; gap: 0.75rem; }
 .entry__date { font-family: var(--font-util); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--ink-soft); }
-.entry__title { font-family: var(--font-display); font-size: 1.28rem; line-height: 1.6; margin: 0.35rem 0 0.5rem; font-weight: 600; }
+.article .crumbs { padding-top: 0; }
+.entry__title { font-family: var(--font-display); font-size: 1.22rem; line-height: 1.6; margin: 0.4rem 0 0.5rem; font-weight: 600; }
 .entry__title a { color: var(--ink); text-decoration: none; }
 .entry__title a:hover { color: var(--mizu); text-decoration: underline; }
-.entry__desc { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+.entry__desc { margin: 0; color: var(--ink-soft); font-size: 0.9rem; line-height: 1.8; }
 
-/* ---------- 記録の帯（このサイトの署名）---------- */
-.record { margin-top: 1.1rem; }
-.record__track { position: relative; height: 5px; background: var(--haze); border-radius: 3px; overflow: hidden; }
-.record__span { position: absolute; top: 0; bottom: 0; background: var(--iou); border-radius: 3px; }
-.record__label { display: block; margin-top: 0.45rem; font-family: var(--font-util); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--ink-soft); }
+@media (max-width: 620px) {
+  .entry { grid-template-columns: 1fr; gap: 0.9rem; }
+}
+
+/* ---------- カテゴリーナビ ---------- */
+.cats { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1.75rem 0 0.5rem; }
+.cats__item {
+  padding: 0.4rem 0.95rem; font-size: 0.85rem; text-decoration: none;
+  color: var(--ink-soft); border: 1px solid var(--haze); border-radius: 999px;
+  background: var(--paper-raised);
+}
+.cats__item:hover { border-color: var(--mizu); color: var(--mizu); }
+.cats__item.is-current { background: var(--mizu); border-color: var(--mizu); color: var(--paper-raised); }
+
+/* ---------- カテゴリー見出し ---------- */
+.cathead { padding: 2rem 0 0.5rem; }
+.cathead__title { font-family: var(--font-display); font-size: 1.75rem; margin: 0.5rem 0 0.5rem; }
+.cathead__desc { margin: 0 0 0.75rem; color: var(--ink-soft); max-width: var(--measure); }
+.cathead__count { margin: 0; font-family: var(--font-util); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--ink-soft); }
+
+.listhead { font-family: var(--font-display); font-size: 1.3rem; margin: 2rem 0 0; display: flex; align-items: baseline; gap: 1rem; }
+.listhead__sub { font-family: var(--font-util); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--ink-soft); }
+
+/* ---------- パンくず ---------- */
+.crumbs { font-size: 0.78rem; color: var(--ink-soft); padding: 1.75rem 0 0; }
+.crumbs a { color: var(--ink-soft); }
+.crumbs span { margin: 0 0.35rem; }
+
+/* ---------- カテゴリーの札 ---------- */
+.tag {
+  font-size: 0.7rem; letter-spacing: 0.08em; text-decoration: none;
+  color: var(--mizu); border: 1px solid var(--mizu); border-radius: 2px;
+  padding: 0.12em 0.5em;
+}
+.tag:hover { background: var(--mizu); color: var(--paper-raised); }
+.entry__meta { display: flex; align-items: center; gap: 0.75rem; }
+
+/* ---------- ページ送り ---------- */
+.pager { display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 3rem 0; flex-wrap: wrap; }
+.pager__nums { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.35rem; align-items: center; }
+.pager__num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 2.3rem; height: 2.3rem; padding: 0 0.5rem;
+  font-family: var(--font-util); font-size: 0.85rem; text-decoration: none;
+  color: var(--ink-soft); border: 1px solid var(--haze); border-radius: 3px;
+  background: var(--paper-raised);
+}
+.pager__num:hover { border-color: var(--mizu); color: var(--mizu); }
+.pager__num.is-current { background: var(--mizu); border-color: var(--mizu); color: var(--paper-raised); }
+.pager__gap { color: var(--ink-soft); padding: 0 0.15rem; }
+.pager__arrow { font-size: 0.85rem; text-decoration: none; color: var(--mizu); }
+.pager__arrow.is-off { color: var(--haze); }
+
+/* ---------- 関連記事・前後の記事 ---------- */
+.related { margin: 3.5rem 0 0; padding: 1.75rem 0 0; border-top: 1px solid var(--haze); }
+.related__head { font-family: var(--font-display); font-size: 1.1rem; margin: 0 0 1rem; }
+.related__list { list-style: none; margin: 0; padding: 0; }
+.related__list li { margin-bottom: 0.85rem; line-height: 1.6; }
+
+.adjacent { display: flex; justify-content: space-between; gap: 1.5rem; margin-top: 2.5rem; padding-top: 1.75rem; border-top: 1px solid var(--haze); }
+.adjacent__item { display: block; max-width: 47%; text-decoration: none; }
+.adjacent__item--next { text-align: right; margin-left: auto; }
+.adjacent__label { display: block; font-family: var(--font-util); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--ink-soft); margin-bottom: 0.3rem; }
+.adjacent__title { display: block; font-size: 0.9rem; line-height: 1.6; color: var(--ink); }
+.adjacent__item:hover .adjacent__title { color: var(--mizu); text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .adjacent { flex-direction: column; gap: 1.25rem; }
+  .adjacent__item, .adjacent__item--next { max-width: 100%; text-align: left; margin-left: 0; }
+}
 
 /* ---------- アイキャッチの図解 ---------- */
 .hero {

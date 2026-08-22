@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import PostList from '../../../components/PostList.astro';
+import Pagination from '../../../components/Pagination.astro';
+import CategoryNav from '../../../components/CategoryNav.astro';
+import { CATEGORIES } from '../../../categories.ts';
+
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+
+  return CATEGORIES.flatMap((cat) => {
+    const filtered = posts.filter((p) => p.data.category === cat.name);
+    return paginate(filtered, {
+      params: { category: cat.slug },
+      props: { cat },
+      pageSize: 10,
+    });
+  });
+}
+
+const { page, cat } = Astro.props;
+---
+
+<Base title={`${cat.name}の記事`} description={cat.description}>
+  <div class="wrap">
+    <CategoryNav current={cat.slug} />
+
+    <header class="cathead">
+      <nav class="crumbs" aria-label="現在地">
+        <a href="/">記事</a> <span aria-hidden="true">›</span> <span>{cat.name}</span>
+      </nav>
+      <h1 class="cathead__title">{cat.name}</h1>
+      <p class="cathead__desc">{cat.description}</p>
+      <p class="cathead__count">{page.total}本の記事</p>
+    </header>
+
+    <PostList posts={page.data} />
+
+    {page.total === 0 && (
+      <p style="padding:2rem 0;color:var(--ink-soft)">このカテゴリーの記事はまだありません。</p>
+    )}
+
+    <Pagination page={page} />
+  </div>
+</Base>
