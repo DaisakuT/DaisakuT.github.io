@@ -1,0 +1,57 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3" />
+
+  <!-- 各ステージを繋ぐ因果ライン -->
+  <path d="M 250 220 L 950 220" stroke="#CDD5D6" stroke-width="6" stroke-dasharray="12 12" />
+
+  <!-- 左セクション: サウナ効果 (温冷交代浴によるリセット) -->
+  <g transform="translate(250, 220)">
+    <!-- 外側のサークル -->
+    <circle r="110" fill="none" stroke="#CDD5D6" stroke-width="4" />
+    <!-- 内側の同心円パターン -->
+    <circle r="90" fill="none" stroke="#14495B" stroke-width="4" />
+    <circle r="70" fill="none" stroke="#14495B" stroke-width="8" />
+    <circle r="45" fill="#14495B" />
+    <!-- 中央のクリーンな十字 (ととのい・リセットの象徴) -->
+    <path d="M -15 0 L 15 0 M 0 -15 L 0 15" stroke="#F2F4F3" stroke-width="6" stroke-linecap="round" />
+  </g>
+  <text x="250" y="410" font-family="sans-serif" font-size="26" font-weight="bold" fill="#10171C" text-anchor="middle">サウナ効果</text>
+
+  <!-- 中央セクション: 味覚の研ぎ澄まし (感覚の覚醒ゲート) -->
+  <g transform="translate(600, 220)">
+    <!-- 背景のガイド円 -->
+    <circle r="110" fill="none" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6" />
+
+    <!-- 左から収束する感覚ライン -->
+    <path d="M -100 -40 L -30 -10" stroke="#14495B" stroke-width="4" stroke-linecap="round" />
+    <path d="M -100 40 L -30 10" stroke="#14495B" stroke-width="4" stroke-linecap="round" />
+    <path d="M -110 0 L -40 0" stroke="#14495B" stroke-width="6" stroke-linecap="round" />
+
+    <!-- 覚醒を示すシャープな星形 -->
+    <path d="M 0 -85 L 20 -20 L 85 0 L 20 20 L 0 85 L -20 20 L -85 0 L -20 -20 Z" fill="#D9A227" />
+    <circle r="10" fill="#F2F4F3" />
+
+    <!-- 右へ放射する味覚ライン -->
+    <path d="M 40 10 L 100 40" stroke="#D9A227" stroke-width="4" stroke-linecap="round" />
+    <path d="M 40 -10 L 100 -40" stroke="#D9A227" stroke-width="4" stroke-linecap="round" />
+    <path d="M 45 0 L 110 0" stroke="#D9A227" stroke-width="6" stroke-linecap="round" />
+  </g>
+
+  <!-- 右セクション: 至高のサ飯 (味覚の充足) -->
+  <g transform="translate(950, 220)">
+    <!-- 外側のサークルと満足の黄金環 -->
+    <circle r="110" fill="none" stroke="#CDD5D6" stroke-width="4" />
+    <circle r="90" fill="none" stroke="#D9A227" stroke-width="6" stroke-dasharray="16 12" />
+
+    <!-- 抽象化された器 (どんぶり) -->
+    <path d="M -55 10 C -55 45 -35 60 0 60 C 35 60 55 45 55 10 Z" fill="#14495B" />
+    <line x1="-60" y1="10" x2="60" y2="10" stroke="#14495B" stroke-width="8" stroke-linecap="round" />
+
+    <!-- 立ち上る豊かな湯気・風味 -->
+    <path d="M -20 -5 Q -10 -25 -20 -45 T -20 -75" fill="none" stroke="#D9A227" stroke-width="5" stroke-linecap="round" />
+    <path d="M 0 -10 Q 10 -30 0 -50 T 0 -80" fill="none" stroke="#D9A227" stroke-width="7" stroke-linecap="round" />
+    <path d="M 20 -5 Q 30 -25 20 -45 T 20 -75" fill="none" stroke="#D9A227" stroke-width="5" stroke-linecap="round" />
+  </g>
+  <text x="950" y="410" font-family="sans-serif" font-size="26" font-weight="bold" fill="#10171C" text-anchor="middle">至高のサ飯</text>
+</svg>
