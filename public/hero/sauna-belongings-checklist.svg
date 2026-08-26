@@ -1,0 +1,68 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3" />
+
+  <!-- 3段階のベースカード -->
+  <rect x="140" y="70" width="260" height="310" rx="16" fill="#CDD5D6" />
+  <rect x="144" y="74" width="252" height="302" rx="12" fill="#F2F4F3" />
+
+  <rect x="470" y="70" width="260" height="310" rx="16" fill="#CDD5D6" />
+  <rect x="474" y="74" width="252" height="302" rx="12" fill="#F2F4F3" />
+
+  <rect x="800" y="70" width="260" height="310" rx="16" fill="#CDD5D6" />
+  <rect x="804" y="74" width="252" height="302" rx="12" fill="#F2F4F3" />
+
+  <!-- ステップアップを示す接続線とプラス記号 -->
+  <line x1="400" y1="225" x2="470" y2="225" stroke="#14495B" stroke-width="4" stroke-linecap="round" />
+  <path d="M 435 210 L 435 240 M 420 225 L 450 225" stroke="#D9A227" stroke-width="4" stroke-linecap="round" />
+
+  <line x1="730" y1="225" x2="800" y2="225" stroke="#14495B" stroke-width="4" stroke-linecap="round" />
+  <path d="M 765 210 L 765 240 M 750 225 L 780 225" stroke="#D9A227" stroke-width="4" stroke-linecap="round" />
+
+  <!-- 1. 基本アイテム（タオル・サウナハット・キー/バッグの抽象図） -->
+  <g>
+    <!-- サウナハット -->
+    <path d="M 270 120 L 220 200 L 320 200 Z" fill="#14495B" />
+    <circle cx="270" cy="115" r="8" fill="#D9A227" />
+    <!-- タオル -->
+    <rect x="210" y="220" width="120" height="36" rx="8" fill="#CDD5D6" />
+    <rect x="225" y="240" width="90" height="40" rx="6" fill="#14495B" />
+    <!-- 小銭/ロッカーキー -->
+    <circle cx="270" cy="315" r="22" fill="none" stroke="#D9A227" stroke-width="6" />
+    <circle cx="270" cy="315" r="8" fill="#14495B" />
+  </g>
+
+  <!-- 2. 便利グッズ（マット・ボトル・スキンケアの抽象図） -->
+  <g>
+    <!-- 折りたたみマット -->
+    <rect x="520" y="125" width="36" height="70" rx="4" fill="#14495B" />
+    <rect x="562" y="125" width="36" height="70" rx="4" fill="#D9A227" />
+    <rect x="604" y="125" width="36" height="70" rx="4" fill="#14495B" />
+    <rect x="646" y="125" width="36" height="70" rx="4" fill="#CDD5D6" />
+    <!-- ドリンクボトル -->
+    <rect x="530" y="235" width="50" height="95" rx="10" fill="#14495B" />
+    <rect x="542" y="215" width="26" height="20" rx="4" fill="#D9A227" />
+    <!-- スキンケアボトル -->
+    <rect x="610" y="250" width="60" height="80" rx="12" fill="#CDD5D6" />
+    <rect x="628" y="230" width="24" height="20" fill="#14495B" />
+    <circle cx="640" cy="285" r="12" fill="#D9A227" />
+  </g>
+
+  <!-- 3. 応用・アウトドア（テント・外気浴・大自然の熱気） -->
+  <g>
+    <!-- アウトドアテント/サウナ -->
+    <polygon points="930,110 840,240 1020,240" fill="#14495B" />
+    <polygon points="930,140 880,240 980,240" fill="#D9A227" />
+    <!-- 蒸気・熱気波 -->
+    <path d="M 860 270 Q 880 255 900 270 T 940 270" fill="none" stroke="#CDD5D6" stroke-width="6" stroke-linecap="round" />
+    <path d="M 920 295 Q 940 280 960 295 T 1000 295" fill="none" stroke="#14495B" stroke-width="6" stroke-linecap="round" />
+    <path d="M 870 320 Q 890 305 910 320 T 950 320" fill="none" stroke="#D9A227" stroke-width="6" stroke-linecap="round" />
+    <!-- 太陽/外気浴アイコン -->
+    <circle cx="985" cy="140" r="18" fill="#D9A227" />
+  </g>
+
+  <!-- 下部テキストラベル（合計6文字） -->
+  <text x="270" y="440" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C">基本</text>
+  <text x="600" y="440" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C">便利</text>
+  <text x="930" y="440" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C">応用</text>
+</svg>
