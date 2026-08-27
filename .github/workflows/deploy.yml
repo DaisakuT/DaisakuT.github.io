@@ -1,9 +1,13 @@
+# サイトを GitHub Pages に公開するワークフロー。
+# main ブランチに変更が入るたびに自動で走ります。
+
 name: サイトを公開
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_call: # 「記事の自動生成」から呼び出すため
 
 permissions:
   contents: read
@@ -23,9 +27,9 @@ jobs:
         uses: withastro/action@v6
         with:
           node-version: "22"
-        
         env:
-          SITE_URL: https://${{ github.repository_owner }}.github.io
+          # 公開先のURL。ドメインを変える場合はこの行だけ書き換えてください。
+          SITE_URL: https://blog.telass.jp
 
   deploy:
     needs: build
