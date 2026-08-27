@@ -1,0 +1,56 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- タイトル -->
+  <text x="600" y="75" font-family="sans-serif" font-size="32" font-weight="bold" fill="#10171C" text-anchor="middle" letter-spacing="4">週３回が最適</text>
+
+  <!-- 1週間のベースライン -->
+  <line x1="120" y1="350" x2="1080" y2="350" stroke="#CDD5D6" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- 1日目: 休養 -->
+  <line x1="180" y1="180" x2="180" y2="350" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="180" cy="350" r="8" fill="#CDD5D6"/>
+
+  <!-- 2日目: 日常サウナ (主役 #14495B) -->
+  <line x1="320" y1="180" x2="320" y2="350" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+  <rect x="290" y="190" width="60" height="130" rx="30" fill="#14495B"/>
+  <path d="M 308 165 Q 314 155 308 145 M 320 170 Q 326 160 320 150 M 332 165 Q 338 155 332 145" stroke="#14495B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="320" cy="350" r="12" fill="#14495B"/>
+
+  <!-- 3日目: 休養 -->
+  <line x1="460" y1="180" x2="460" y2="350" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="460" cy="350" r="8" fill="#CDD5D6"/>
+
+  <!-- 4日目: 日常サウナ (主役 #14495B) -->
+  <line x1="600" y1="180" x2="600" y2="350" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+  <rect x="570" y="190" width="60" height="130" rx="30" fill="#14495B"/>
+  <path d="M 588 165 Q 594 155 588 145 M 600 170 Q 606 160 600 150 M 612 165 Q 618 155 612 145" stroke="#14495B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="600" cy="350" r="12" fill="#14495B"/>
+
+  <!-- 5日目: 休養 -->
+  <line x1="740" y1="180" x2="740" y2="350" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="740" cy="350" r="8" fill="#CDD5D6"/>
+
+  <!-- 6日目: ご褒美サウナ (強調 #D9A227) -->
+  <line x1="880" y1="140" x2="880" y2="350" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+  <rect x="845" y="160" width="70" height="160" rx="35" fill="#D9A227"/>
+  <path d="M 865 135 Q 873 120 865 105 M 880 140 Q 888 125 880 110 M 895 135 Q 903 120 895 105" stroke="#D9A227" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <circle cx="835" cy="145" r="5" fill="#D9A227"/>
+  <circle cx="925" cy="145" r="5" fill="#D9A227"/>
+  <circle cx="880" cy="350" r="16" fill="#D9A227"/>
+
+  <!-- 7日目: 休養 -->
+  <line x1="1020" y1="180" x2="1020" y2="350" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="1020" cy="350" r="8" fill="#CDD5D6"/>
+
+  <!-- コンディションの波（ととのいバイオリズム） -->
+  <path d="M 120 410 Q 220 410 320 380 T 460 410 T 600 380 T 740 410 T 880 360 Q 980 410 1080 410" fill="none" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 740 410 Q 810 410 880 360 Q 950 410 1020 410" fill="none" stroke="#D9A227" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- 構成要素の組み合わせ図解 (日常2 + ご褒美1) -->
+  <circle cx="535" cy="455" r="9" fill="#14495B"/>
+  <circle cx="560" cy="455" r="9" fill="#14495B"/>
+  <text x="585" y="461" font-family="sans-serif" font-size="18" fill="#10171C" text-anchor="middle" font-weight="bold">+</text>
+  <circle cx="610" cy="455" r="13" fill="#D9A227"/>
+</svg>
