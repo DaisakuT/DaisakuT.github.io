@@ -22,9 +22,6 @@ const thanksUrl = new URL('/thanks/', Astro.site).href;
       <form class="form" action={endpoint} method="POST">
         <input type="hidden" name="_next" value={thanksUrl} />
         <input type="hidden" name="_subject" value="ブログからのお問い合わせ" />
-        <!-- スパム対策。人間には見えない項目です -->
-        <input type="text" name="_gotcha" class="form__trap" tabindex="-1" autocomplete="off" />
-
         <label class="form__row">
           <span class="form__label">お名前 <em>必須</em></span>
           <input class="form__input" type="text" name="お名前" required autocomplete="name" />
