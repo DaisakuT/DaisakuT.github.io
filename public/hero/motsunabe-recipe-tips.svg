@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <line x1="150" y1="420" x2="1050" y2="420" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="8,8"/>
+  <line x1="150" y1="100" x2="1050" y2="100" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="8,8"/>
+
+  <path d="M 520,75 L 680,75" stroke="#CDD5D6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 540,75 A 60,45 0 0,0 660,75 Z" fill="none" stroke="#CDD5D6" stroke-width="4"/>
+  <circle cx="600" cy="55" r="4" fill="#D9A227"/>
+  <circle cx="580" cy="60" r="3" fill="#CDD5D6"/>
+  <circle cx="620" cy="60" r="3" fill="#CDD5D6"/>
+
+  <path d="M 250,310 L 600,240 L 950,170" fill="none" stroke="#CDD5D6" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 250,310 L 600,240 L 950,170" fill="none" stroke="#14495B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10,10"/>
+
+  <polygon points="435,264 415,255 420,275" fill="#14495B"/>
+  <polygon points="785,194 765,185 770,205" fill="#D9A227"/>
+
+  <g transform="translate(250, 310)">
+    <circle cx="0" cy="0" r="75" fill="#14495B"/>
+    <circle cx="0" cy="0" r="58" fill="#F2F4F3"/>
+    
+    <rect x="-24" y="-24" width="20" height="20" rx="3" fill="#14495B"/>
+    <circle cx="14" cy="-14" r="10" fill="#D9A227"/>
+    <polygon points="-14,24 -24,6 -4,6" fill="#CDD5D6"/>
+    <rect x="4" y="4" width="20" height="20" rx="10" fill="#14495B"/>
+
+    <circle cx="0" cy="-95" r="16" fill="#14495B"/>
+    <text x="0" y="-89" font-family="sans-serif" font-size="14" font-weight="bold" fill="#F2F4F3" text-anchor="middle">1</text>
+
+    <rect x="-70" y="95" width="140" height="44" rx="22" fill="#14495B"/>
+    <text x="0" y="123" font-family="sans-serif" font-size="18" font-weight="bold" fill="#F2F4F3" text-anchor="middle">下処理</text>
+  </g>
+
+  <g transform="translate(600, 240)">
+    <circle cx="0" cy="0" r="90" fill="#D9A227"/>
+    <circle cx="0" cy="0" r="72" fill="#14495B"/>
+
+    <path d="M -45,0 A 45,45 0 0,0 45,0 Z" fill="#D9A227"/>
+    <path d="M -35,-10 Q -17,-25 0,-10 T 35,-10" stroke="#F2F4F3" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M -25,-25 Q -12,-37 0,-25 T 25,-25" stroke="#CDD5D6" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <circle cx="0" cy="18" r="8" fill="#14495B"/>
+
+    <circle cx="0" cy="-112" r="18" fill="#D9A227"/>
+    <text x="0" y="-105" font-family="sans-serif" font-size="16" font-weight="bold" fill="#10171C" text-anchor="middle">2</text>
+
+    <rect x="-70" y="110" width="140" height="44" rx="22" fill="#D9A227"/>
+    <text x="0" y="138" font-family="sans-serif" font-size="18" font-weight="bold" fill="#10171C" text-anchor="middle">火加減</text>
+  </g>
+
+  <g transform="translate(950, 170)">
+    <circle cx="0" cy="0" r="75" fill="#14495B"/>
+    <circle cx="0" cy="0" r="58" fill="#F2F4F3"/>
+
+    <path d="M -25,0 C -25,-20 -5,-20 0,0 C 5,20 25,20 25,0 C 25,-20 5,-20 0,0 C -5,20 -25,20 -25,0 Z" stroke="#D9A227" stroke-width="6" fill="none"/>
+    <circle cx="0" cy="0" r="7" fill="#14495B"/>
+
+    <polygon points="0,-102 8,-87 25,-87 11,-76 16,-60 0,-70 -16,-60 -11,-76 -25,-87 -8,-87" fill="#D9A227"/>
+    <circle cx="0" cy="-95" r="16" fill="#14495B"/>
+    <text x="0" y="-89" font-family="sans-serif" font-size="14" font-weight="bold" fill="#F2F4F3" text-anchor="middle">3</text>
+
+    <rect x="-70" y="95" width="140" height="44" rx="22" fill="#14495B"/>
+    <text x="0" y="123" font-family="sans-serif" font-size="18" font-weight="bold" fill="#F2F4F3" text-anchor="middle">〆のコツ</text>
+  </g>
+</svg>
