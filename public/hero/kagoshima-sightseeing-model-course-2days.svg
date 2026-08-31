@@ -1,0 +1,59 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- ルート接続線 -->
+  <path d="M 150 260 H 1050" stroke="#CDD5D6" stroke-width="8" stroke-dasharray="16 12"/>
+  <path d="M 280 260 H 920" stroke="#14495B" stroke-width="8"/>
+
+  <!-- DAY 1: 海と活火山（桜島・市内）エリア -->
+  <g>
+    <!-- 背景アクセント円 -->
+    <circle cx="280" cy="220" r="110" fill="#CDD5D6" opacity="0.6"/>
+    <!-- 太陽/エネルギー -->
+    <circle cx="360" cy="150" r="28" fill="#D9A227"/>
+    <!-- 火山形状（幾何学トライアングル） -->
+    <polygon points="160,330 280,170 400,330" fill="#14495B"/>
+    <!-- 噴煙・カルデラの抽象ライン -->
+    <path d="M 250,150 Q 280,110 310,150" stroke="#D9A227" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <!-- 海・波の幾何学ライン -->
+    <line x1="180" y1="310" x2="380" y2="310" stroke="#F2F4F3" stroke-width="4"/>
+    <line x1="210" y1="290" x2="350" y2="290" stroke="#F2F4F3" stroke-width="4"/>
+    <!-- ステップノード -->
+    <circle cx="280" cy="380" r="16" fill="#14495B"/>
+    <circle cx="280" cy="380" r="8" fill="#F2F4F3"/>
+    <!-- テキスト -->
+    <text x="280" y="430" font-family="sans-serif" font-size="22" font-weight="bold" fill="#10171C" text-anchor="middle">１日目</text>
+  </g>
+
+  <!-- STAY: 宿泊・温泉ハブ（中間地点） -->
+  <g>
+    <!-- 結節点プレート -->
+    <rect x="540" y="190" width="120" height="140" rx="60" fill="#F2F4F3" stroke="#D9A227" stroke-width="6"/>
+    <!-- 温泉・夜のモチーフ（湯気と月） -->
+    <circle cx="600" cy="235" r="20" fill="#D9A227"/>
+    <path d="M 585,290 C 585,275 595,275 595,260" stroke="#14495B" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 600,290 C 600,275 610,275 610,260" stroke="#14495B" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 615,290 C 615,275 625,275 625,260" stroke="#14495B" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- テキスト -->
+    <text x="600" y="375" font-family="sans-serif" font-size="20" font-weight="bold" fill="#10171C" text-anchor="middle">宿泊</text>
+  </g>
+
+  <!-- DAY 2: 高原と大自然（霧島）エリア -->
+  <g>
+    <!-- 連山（霧島） -->
+    <polygon points="760,330 860,190 960,330" fill="#CDD5D6"/>
+    <polygon points="820,330 920,150 1020,330" fill="#14495B"/>
+    <!-- 自然・森のアクセント -->
+    <polygon points="920,190 890,240 950,240" fill="#D9A227"/>
+    <circle cx="800" cy="180" r="18" fill="#D9A227"/>
+    <!-- ステップノード -->
+    <circle cx="920" cy="380" r="16" fill="#14495B"/>
+    <circle cx="920" cy="380" r="8" fill="#F2F4F3"/>
+    <!-- テキスト -->
+    <text x="920" y="430" font-family="sans-serif" font-size="22" font-weight="bold" fill="#10171C" text-anchor="middle">２日目</text>
+  </g>
+
+  <!-- 進行方向を示す矢印アイコン -->
+  <polygon points="465,250 485,260 465,270" fill="#D9A227"/>
+  <polygon points="725,250 745,260 725,270" fill="#D9A227"/>
+</svg>
