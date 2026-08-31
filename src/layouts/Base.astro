@@ -22,6 +22,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonical} />
     <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {SITE.gaId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaId}`}></script>
+        <script is:inline define:vars={{ gaId: SITE.gaId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
+
     {SITE.adsenseClient && (
       <script
         async
