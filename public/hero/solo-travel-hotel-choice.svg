@@ -1,0 +1,70 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- 背景幾何学グリッド・接続ライン -->
+  <line x1="150" y1="230" x2="1050" y2="230" stroke="#CDD5D6" stroke-width="4" stroke-dasharray="8 8"/>
+  <circle cx="600" cy="230" r="170" fill="none" stroke="#CDD5D6" stroke-width="2"/>
+  <circle cx="600" cy="230" r="190" fill="none" stroke="#CDD5D6" stroke-width="1" stroke-dasharray="4 6"/>
+
+  <!-- 上部インジケーター（選択・分岐の起点） -->
+  <polygon points="600,50 615,75 585,75" fill="#D9A227"/>
+  <line x1="600" y1="75" x2="600" y2="120" stroke="#14495B" stroke-width="3"/>
+  <path d="M 600,120 Q 250,120 250,160" fill="none" stroke="#14495B" stroke-width="3"/>
+  <path d="M 600,120 Q 950,120 950,160" fill="none" stroke="#14495B" stroke-width="3"/>
+  <line x1="600" y1="120" x2="600" y2="150" stroke="#14495B" stroke-width="3"/>
+
+  <!-- 1. 滞在重視 (左) -->
+  <g transform="translate(250, 230)">
+    <!-- カード背景 -->
+    <rect x="-100" y="-70" width="200" height="150" rx="16" fill="#14495B"/>
+    <!-- 抽象アイコン: 空間・くつろぎ・窓 -->
+    <rect x="-60" y="-45" width="120" height="60" rx="6" fill="#F2F4F3"/>
+    <rect x="-50" y="-35" width="45" height="40" rx="3" fill="#CDD5D6"/>
+    <rect x="5" y="-35" width="45" height="40" rx="3" fill="#CDD5D6"/>
+    <circle cx="50" cy="-55" r="10" fill="#D9A227"/>
+    <!-- ラベル台座 -->
+    <rect x="-50" y="30" width="100" height="20" rx="10" fill="#CDD5D6"/>
+    <!-- 文字 -->
+    <text x="0" y="125" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C" text-anchor="middle">滞在</text>
+  </g>
+
+  <!-- 2. 観光重視 (中央: 拠点・アクティブ) -->
+  <g transform="translate(600, 230)">
+    <!-- カード背景 (強調) -->
+    <rect x="-110" y="-80" width="220" height="170" rx="20" fill="#D9A227"/>
+    <!-- 抽象アイコン: 立地ピン・方位・拠点 -->
+    <circle cx="0" cy="-15" r="50" fill="#14495B"/>
+    <!-- ピンの幾何学 -->
+    <circle cx="0" cy="-20" r="18" fill="#F2F4F3"/>
+    <polygon points="0,15 -14,-12 14,-12" fill="#F2F4F3"/>
+    <circle cx="0" cy="-20" r="8" fill="#D9A227"/>
+    <!-- 放射ライン -->
+    <line x1="0" y1="-73" x2="0" y2="-68" stroke="#F2F4F3" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-58" y1="-15" x2="-53" y2="-15" stroke="#F2F4F3" stroke-width="4" stroke-linecap="round"/>
+    <line x1="53" y1="-15" x2="58" y2="-15" stroke="#F2F4F3" stroke-width="4" stroke-linecap="round"/>
+    <!-- 文字 -->
+    <text x="0" y="135" font-family="sans-serif" font-size="26" font-weight="bold" fill="#10171C" text-anchor="middle">観光</text>
+  </g>
+
+  <!-- 3. 価格重視 (右) -->
+  <g transform="translate(950, 230)">
+    <!-- カード背景 -->
+    <rect x="-100" y="-70" width="200" height="150" rx="16" fill="#14495B"/>
+    <!-- 抽象アイコン: コスト最適化・スマートな選択 -->
+    <rect x="-55" y="-45" width="110" height="70" rx="8" fill="#F2F4F3"/>
+    <circle cx="-15" cy="-10" r="22" fill="#D9A227"/>
+    <circle cx="15" cy="-10" r="22" fill="#CDD5D6"/>
+    <circle cx="0" cy="-10" r="14" fill="#14495B"/>
+    <path d="M -35,15 L 35,15" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+    <!-- ラベル台座 -->
+    <rect x="-50" y="30" width="100" height="20" rx="10" fill="#CDD5D6"/>
+    <!-- 文字 -->
+    <text x="0" y="125" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C" text-anchor="middle">価格</text>
+  </g>
+
+  <!-- 下部アクセントドット（判断基準の安定感） -->
+  <circle cx="250" cy="410" r="4" fill="#14495B"/>
+  <circle cx="600" cy="410" r="5" fill="#D9A227"/>
+  <circle cx="950" cy="410" r="4" fill="#14495B"/>
+</svg>
