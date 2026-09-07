@@ -1,0 +1,58 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3" />
+
+  <!-- 中央の区切り構造 -->
+  <line x1="600" y1="70" x2="600" y2="390" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6" />
+
+  <!-- 底部の温度バー軸 -->
+  <rect x="180" y="420" width="840" height="8" rx="4" fill="#CDD5D6" />
+  <!-- 最適温度レンジ (70-80度付近) -->
+  <rect x="360" y="416" width="160" height="16" rx="8" fill="#D9A227" />
+  <circle cx="440" cy="424" r="14" fill="#14495B" />
+  <circle cx="440" cy="424" r="6" fill="#F2F4F3" />
+  <!-- 沸騰ポイント (100度付近) -->
+  <circle cx="860" cy="424" r="8" fill="#14495B" />
+
+  <!-- 左側：適温 (70〜80度) / 柔らかさ・旨みの幾何学的表現 -->
+  <g transform="translate(380, 200)">
+    <!-- 穏やかな熱の波紋 -->
+    <circle cx="0" cy="0" r="130" fill="none" stroke="#CDD5D6" stroke-width="2" />
+    <circle cx="0" cy="0" r="105" fill="none" stroke="#D9A227" stroke-width="3" stroke-dasharray="12 8" />
+    <circle cx="0" cy="0" r="80" fill="#F2F4F3" stroke="#14495B" stroke-width="3" />
+
+    <!-- しなやかで柔らかい肉の層（角丸の曲線構成） -->
+    <rect x="-55" y="-36" width="110" height="16" rx="8" fill="#D9A227" />
+    <rect x="-65" y="-10" width="130" height="20" rx="10" fill="#14495B" />
+    <rect x="-55" y="20" width="110" height="16" rx="8" fill="#D9A227" />
+
+    <!-- 旨みを表すアクセントドット -->
+    <circle cx="-35" cy="-70" r="5" fill="#D9A227" />
+    <circle cx="0" cy="-80" r="7" fill="#D9A227" />
+    <circle cx="35" cy="-70" r="5" fill="#D9A227" />
+  </g>
+
+  <!-- 右側：沸騰 (100度) / 硬直・過熱の幾何学的表現 -->
+  <g transform="translate(820, 200)">
+    <!-- 激しい沸騰の気泡と熱（鋭く硬い表現） -->
+    <circle cx="0" cy="0" r="130" fill="none" stroke="#CDD5D6" stroke-width="2" />
+    <polygon points="0,-120 18,-85 -18,-85" fill="#14495B" />
+    <polygon points="85,-85 85,-50 55,-65" fill="#14495B" />
+    <polygon points="-85,-85 -55,-65 -85,-50" fill="#14495B" />
+
+    <!-- 収縮して硬直したブロック構造 -->
+    <rect x="-50" y="-50" width="100" height="100" rx="4" fill="#14495B" />
+    <rect x="-35" y="-35" width="70" height="70" fill="#CDD5D6" />
+    <rect x="-20" y="-20" width="40" height="40" fill="#10171C" />
+
+    <!-- 乱れた小さな気泡 -->
+    <circle cx="-65" cy="65" r="10" fill="#CDD5D6" />
+    <circle cx="70" cy="55" r="14" fill="#CDD5D6" />
+    <circle cx="55" cy="-60" r="8" fill="#CDD5D6" />
+    <circle cx="-70" cy="-40" r="12" fill="#CDD5D6" />
+  </g>
+
+  <!-- ラベル（合計4文字） -->
+  <text x="380" y="375" font-family="sans-serif" font-size="32" font-weight="bold" fill="#10171C" text-anchor="middle">適温</text>
+  <text x="820" y="375" font-family="sans-serif" font-size="32" font-weight="bold" fill="#10171C" text-anchor="middle">沸騰</text>
+</svg>
