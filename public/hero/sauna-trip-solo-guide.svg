@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- Connector Path -->
+  <path d="M 230 250 L 600 250 L 970 250" stroke="#CDD5D6" stroke-width="4" stroke-dasharray="8 8"/>
+  
+  <!-- Step 1: 巡る (Journey / Route) -->
+  <g transform="translate(230, 220)">
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#CDD5D6" stroke-width="2"/>
+    
+    <!-- Abstract Route & Waypoints -->
+    <path d="M -50 30 Q -20 -60 20 -30 T 60 20" fill="none" stroke="#14495B" stroke-width="3"/>
+    
+    <!-- Waypoint 1 -->
+    <circle cx="-50" cy="30" r="10" fill="#14495B"/>
+    <circle cx="-50" cy="30" r="4" fill="#F2F4F3"/>
+    
+    <!-- Waypoint 2 (Main / Accent) -->
+    <circle cx="20" cy="-30" r="18" fill="#D9A227"/>
+    <circle cx="20" cy="-30" r="8" fill="#F2F4F3"/>
+    
+    <!-- Waypoint 3 -->
+    <circle cx="60" cy="20" r="12" fill="#14495B"/>
+    <circle cx="60" cy="20" r="5" fill="#F2F4F3"/>
+
+    <!-- Small decorative dots -->
+    <circle cx="-20" cy="-50" r="4" fill="#CDD5D6"/>
+    <circle cx="45" cy="-45" r="5" fill="#CDD5D6"/>
+    
+    <!-- Single traveler indicator -->
+    <circle cx="-20" cy="55" r="6" fill="#14495B"/>
+  </g>
+  <text x="230" y="380" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C" text-anchor="middle" letter-spacing="4">巡る</text>
+
+  <!-- Step Arrow 1 -->
+  <path d="M 400 220 L 430 220 M 420 210 L 430 220 L 420 230" fill="none" stroke="#14495B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Step 2: ととのう (Sauna & Cycle) -->
+  <g transform="translate(600, 220)">
+    <!-- Concentric Calm Rings -->
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#CDD5D6" stroke-width="2"/>
+    <circle cx="0" cy="0" r="75" fill="none" stroke="#14495B" stroke-width="2" stroke-dasharray="6 6"/>
+    
+    <!-- Core Center -->
+    <circle cx="0" cy="0" r="45" fill="#14495B"/>
+    <circle cx="0" cy="0" r="30" fill="#D9A227"/>
+    <circle cx="0" cy="0" r="12" fill="#F2F4F3"/>
+
+    <!-- Rising Heat Waves -->
+    <path d="M -25 -55 Q -20 -70 -25 -85" fill="none" stroke="#D9A227" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 0 -60 Q 5 -75 0 -90" fill="none" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 25 -55 Q 30 -70 25 -85" fill="none" stroke="#D9A227" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Cool Drop / Depth Accent -->
+    <circle cx="0" cy="62" r="6" fill="#14495B"/>
+  </g>
+  <text x="600" y="380" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C" text-anchor="middle" letter-spacing="4">ととのう</text>
+
+  <!-- Step Arrow 2 -->
+  <path d="M 770 220 L 800 220 M 790 210 L 800 220 L 790 230" fill="none" stroke="#14495B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Step 3: 満喫 (Fulfillment / Sauna Meal) -->
+  <g transform="translate(970, 220)">
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#CDD5D6" stroke-width="2"/>
+    
+    <!-- Radiance / Fulfillment Rays -->
+    <path d="M 0 -80 L 0 -65 M 0 65 L 0 80 M -80 0 L -65 0 M 65 0 L 80 0 M -55 -55 L -45 -45 M 55 55 L 45 45 M -55 55 L -45 45 M 55 -55 L 45 -45" fill="none" stroke="#CDD5D6" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Dish / Bowl Base Motif (Sauna Meshi) -->
+    <path d="M -45 15 A 45 45 0 0 0 45 15 Z" fill="#14495B"/>
+    
+    <!-- Sparkling Star / Peak Delight -->
+    <path d="M 0 -35 Q 0 -5 30 -5 Q 0 -5 0 25 Q 0 -5 -30 -5 Q 0 -5 0 -35 Z" fill="#D9A227"/>
+    <circle cx="0" cy="-5" r="4" fill="#F2F4F3"/>
+  </g>
+  <text x="970" y="380" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C" text-anchor="middle" letter-spacing="4">満喫</text>
+</svg>
