@@ -1,0 +1,50 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- ベースライン / タイムライン軸 -->
+  <line x1="80" y1="410" x2="1120" y2="410" stroke="#CDD5D6" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- 左エリア：混雑（ピーク・待ち時間） -->
+  <rect x="80" y="70" width="480" height="320" rx="12" fill="#F2F4F3" stroke="#CDD5D6" stroke-width="2"/>
+  
+  <!-- 混雑ゾーンの抽象バー・高波（密集と長時間の待機） -->
+  <rect x="130" y="240" width="36" height="120" rx="6" fill="#CDD5D6"/>
+  <rect x="180" y="180" width="36" height="180" rx="6" fill="#14495B"/>
+  <rect x="230" y="140" width="36" height="220" rx="6" fill="#14495B"/>
+  <rect x="280" y="160" width="36" height="200" rx="6" fill="#14495B"/>
+  <rect x="330" y="220" width="36" height="140" rx="6" fill="#CDD5D6"/>
+  
+  <!-- 混雑・時間オーバーの抽象シンボル（時計と砂の堆積） -->
+  <circle cx="450" cy="200" r="45" fill="none" stroke="#CDD5D6" stroke-width="8"/>
+  <polyline points="450,175 450,200 475,200" fill="none" stroke="#10171C" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 425 280 L 475 280 L 450 315 Z" fill="#CDD5D6"/>
+
+  <!-- 左ラベル -->
+  <text x="130" y="125" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C">混雑</text>
+
+  <!-- 中央の移行・シフト矢印 -->
+  <circle cx="600" cy="230" r="32" fill="#D9A227"/>
+  <polygon points="590,212 615,230 590,248" fill="#F2F4F3"/>
+
+  <!-- 右エリア：狙い目（快適・最適時間帯） -->
+  <rect x="640" y="70" width="480" height="320" rx="12" fill="#14495B"/>
+
+  <!-- 狙い目ゾーンの快適な空間（ゆとりある低負荷ライン） -->
+  <rect x="690" y="310" width="40" height="50" rx="6" fill="#CDD5D6"/>
+  <rect x="745" y="280" width="40" height="80" rx="6" fill="#D9A227"/>
+  <rect x="800" y="310" width="40" height="50" rx="6" fill="#CDD5D6"/>
+
+  <!-- 砂むし温泉の温かさと快適さのシンボル（砂層・蒸気・サークル） -->
+  <circle cx="980" cy="200" r="50" fill="#D9A227"/>
+  <path d="M 945 270 Q 980 250 1015 270" fill="none" stroke="#F2F4F3" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 955 295 Q 980 280 1005 295" fill="none" stroke="#CDD5D6" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- 蒸気モチーフ -->
+  <path d="M 965 130 Q 960 115 965 100" fill="none" stroke="#F2F4F3" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 980 125 Q 975 110 980 95" fill="none" stroke="#D9A227" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 995 130 Q 990 115 995 100" fill="none" stroke="#F2F4F3" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- 右ラベル -->
+  <text x="690" y="125" font-family="sans-serif" font-size="28" font-weight="bold" fill="#D9A227">狙い目</text>
+</svg>
