@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+  <path d="M 150 200 Q 600 110 1050 200" fill="none" stroke="#CDD5D6" stroke-width="3" stroke-dasharray="8 8"/>
+  <line x1="330" y1="200" x2="460" y2="200" stroke="#14495B" stroke-width="4"/>
+  <polygon points="475,200 455,188 455,212" fill="#14495B"/>
+  <line x1="710" y1="200" x2="840" y2="200" stroke="#14495B" stroke-width="4"/>
+  <polygon points="855,200 835,188 835,212" fill="#14495B"/>
+  <circle cx="220" cy="80" r="8" fill="#D9A227"/>
+  <circle cx="600" cy="80" r="8" fill="#CDD5D6"/>
+  <circle cx="980" cy="80" r="8" fill="#D9A227"/>
+  <g transform="translate(220, 200)">
+    <circle cx="0" cy="0" r="90" fill="#14495B"/>
+    <polygon points="0,-60 -52,40 52,40" fill="#D9A227"/>
+    <polygon points="0,-32 -36,40 36,40" fill="#F2F4F3"/>
+    <polygon points="0,-6 -20,40 20,40" fill="#14495B"/>
+    <circle cx="0" cy="-66" r="7" fill="#D9A227"/>
+  </g>
+  <g transform="translate(600, 200)">
+    <circle cx="0" cy="0" r="90" fill="#14495B"/>
+    <rect x="-60" y="-45" width="120" height="14" rx="7" fill="#CDD5D6"/>
+    <rect x="-45" y="-18" width="90" height="14" rx="7" fill="#CDD5D6"/>
+    <rect x="-30" y="9" width="60" height="14" rx="7" fill="#CDD5D6"/>
+    <polygon points="0,62 -24,32 24,32" fill="#CDD5D6"/>
+  </g>
+  <g transform="translate(980, 200)">
+    <circle cx="0" cy="0" r="98" fill="#D9A227"/>
+    <circle cx="0" cy="0" r="84" fill="#14495B"/>
+    <polygon points="0,-84 20,-20 84,0 20,20 0,84 -20,20 -84,0 -20,-20" fill="#D9A227"/>
+    <polygon points="0,-56 14,-14 56,0 14,14 0,56 -14,14 -56,0 -14,-14" fill="#F2F4F3"/>
+    <circle cx="0" cy="0" r="26" fill="#14495B"/>
+    <circle cx="0" cy="0" r="12" fill="#D9A227"/>
+  </g>
+  <text x="220" y="360" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" text-anchor="middle">サウナ</text>
+  <text x="600" y="360" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" text-anchor="middle">水風呂</text>
+  <text x="980" y="360" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" text-anchor="middle">整う</text>
+</svg>
