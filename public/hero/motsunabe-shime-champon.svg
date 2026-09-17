@@ -1,0 +1,78 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="500" fill="#F2F4F3" />
+
+  <!-- Grid & Guide lines -->
+  <line x1="100" y1="420" x2="1100" y2="420" stroke="#CDD5D6" stroke-width="2" />
+  <rect x="550" y="35" width="100" height="8" rx="4" fill="#D9A227" />
+
+  <!-- STEP 1: SOUP BASE -->
+  <g id="step1">
+    <!-- Step Indicator -->
+    <circle cx="250" cy="65" r="16" fill="#CDD5D6" />
+    <circle cx="250" cy="65" r="6" fill="#14495B" />
+
+    <!-- Abstract Pot / Broth motif -->
+    <circle cx="250" cy="210" r="90" fill="#14495B" />
+    <circle cx="250" cy="210" r="68" fill="#CDD5D6" />
+    <circle cx="250" cy="210" r="46" fill="#14495B" />
+    <circle cx="250" cy="210" r="22" fill="#D9A227" />
+
+    <!-- Flavor particle dots -->
+    <circle cx="180" cy="140" r="6" fill="#D9A227" />
+    <circle cx="320" cy="140" r="8" fill="#14495B" />
+    <circle cx="165" cy="250" r="8" fill="#14495B" />
+    <circle cx="330" cy="260" r="6" fill="#D9A227" />
+
+    <!-- Label -->
+    <text x="250" y="385" font-family="sans-serif" font-size="26" font-weight="bold" fill="#10171C" text-anchor="middle">スープ</text>
+  </g>
+
+  <!-- FLOW CONNECTOR 1 -> 2 -->
+  <g id="flow1">
+    <line x1="360" y1="210" x2="450" y2="210" stroke="#14495B" stroke-width="4" stroke-dasharray="8 6" />
+    <polygon points="465,210 445,198 445,222" fill="#14495B" />
+  </g>
+
+  <!-- STEP 2: CHAMPON NOODLES (HERO ITEM) -->
+  <g id="step2">
+    <!-- Outer Highlight Frame -->
+    <rect x="475" y="85" width="250" height="250" rx="24" fill="#14495B" />
+    <rect x="490" y="100" width="220" height="220" rx="16" fill="#F2F4F3" />
+
+    <!-- Interlocking / Absorbing Noodle Motif -->
+    <path d="M 520 150 Q 600 120 600 210 T 680 270" stroke="#D9A227" stroke-width="18" fill="none" stroke-linecap="round" />
+    <path d="M 520 270 Q 600 300 600 210 T 680 150" stroke="#14495B" stroke-width="14" fill="none" stroke-linecap="round" />
+    <path d="M 535 210 H 665" stroke="#D9A227" stroke-width="14" fill="none" stroke-linecap="round" />
+
+    <!-- Umami Absorption Nodes -->
+    <circle cx="600" cy="210" r="12" fill="#D9A227" />
+    <circle cx="560" cy="170" r="8" fill="#14495B" />
+    <circle cx="640" cy="250" r="8" fill="#14495B" />
+
+    <!-- Label -->
+    <text x="600" y="385" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" text-anchor="middle">ちゃんぽん</text>
+  </g>
+
+  <!-- FLOW CONNECTOR 2 -> 3 -->
+  <g id="flow2">
+    <line x1="740" y1="210" x2="825" y2="210" stroke="#D9A227" stroke-width="6" />
+    <polygon points="840,210 818,196 818,224" fill="#D9A227" />
+  </g>
+
+  <!-- STEP 3: ULTIMATE FLAVOR CULMINATION -->
+  <g id="step3">
+    <!-- Step Indicator -->
+    <circle cx="950" cy="65" r="16" fill="#CDD5D6" />
+    <circle cx="950" cy="65" r="6" fill="#14495B" />
+
+    <!-- Geometric Peak / Flavor Burst Motif -->
+    <rect x="850" y="110" width="200" height="200" rx="100" fill="#14495B" />
+    <polygon points="950,115 978,182 1045,210 978,238 950,305 922,238 855,210 922,182" fill="#D9A227" />
+    <circle cx="950" cy="210" r="36" fill="#F2F4F3" />
+    <circle cx="950" cy="210" r="18" fill="#14495B" />
+
+    <!-- Label -->
+    <text x="950" y="385" font-family="sans-serif" font-size="26" font-weight="bold" fill="#10171C" text-anchor="middle">極上</text>
+  </g>
+</svg>
