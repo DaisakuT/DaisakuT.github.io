@@ -1,0 +1,83 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- タイトル部 -->
+  <text x="600" y="68" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="bold" fill="#10171C" letter-spacing="8">サウナ作法</text>
+  <rect x="560" y="86" width="80" height="3" fill="#D9A227"/>
+
+  <!-- 進行ガイドライン -->
+  <line x1="250" y1="230" x2="950" y2="230" stroke="#CDD5D6" stroke-width="4" stroke-dasharray="8 8"/>
+
+  <!-- コネクタ矢印 1->2 -->
+  <path d="M 415 220 L 430 230 L 415 240" fill="none" stroke="#D9A227" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- コネクタ矢印 2->3 -->
+  <path d="M 765 220 L 780 230 L 765 240" fill="none" stroke="#D9A227" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ================= 第1工程：洗う ================= -->
+  <!-- ベースサークル -->
+  <circle cx="250" cy="230" r="110" fill="#F2F4F3" stroke="#CDD5D6" stroke-width="3"/>
+  <circle cx="250" cy="230" r="98" fill="none" stroke="#14495B" stroke-width="1.5"/>
+
+  <!-- シャワーヘッドと水滴 -->
+  <path d="M 215 170 C 215 155 235 155 245 165 L 260 180" fill="none" stroke="#14495B" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 252 172 L 272 192" fill="none" stroke="#14495B" stroke-width="6" stroke-linecap="round"/>
+  
+  <line x1="272" y1="198" x2="280" y2="206" stroke="#D9A227" stroke-width="3" stroke-linecap="round"/>
+  <line x1="262" y1="202" x2="270" y2="210" stroke="#14495B" stroke-width="3" stroke-linecap="round"/>
+  <line x1="282" y1="192" x2="290" y2="200" stroke="#14495B" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- 持ち物（タオル）の抽象化 -->
+  <rect x="205" y="240" width="90" height="18" rx="5" fill="#14495B"/>
+  <rect x="215" y="264" width="70" height="14" rx="4" fill="#CDD5D6"/>
+  <rect x="225" y="244" width="12" height="10" rx="2" fill="#D9A227"/>
+
+  <!-- テキスト -->
+  <text x="250" y="390" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#10171C">洗う</text>
+
+
+  <!-- ================= 第2工程：座る ================= -->
+  <!-- ベースサークル -->
+  <circle cx="600" cy="230" r="110" fill="#F2F4F3" stroke="#14495B" stroke-width="3"/>
+
+  <!-- 熱気・蒸気 -->
+  <path d="M 575 165 C 575 155 585 150 585 140" fill="none" stroke="#D9A227" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 600 170 C 600 158 610 152 610 140" fill="none" stroke="#D9A227" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 625 165 C 625 155 635 150 635 140" fill="none" stroke="#D9A227" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- サウナベンチ（段差構造） -->
+  <path d="M 535 285 L 535 245 L 575 245 L 575 205 L 665 205 L 665 285 Z" fill="#CDD5D6"/>
+  <path d="M 575 245 L 575 205 L 665 205 L 665 285 L 625 285 L 625 245 Z" fill="#14495B"/>
+  
+  <!-- 敷いたサウナマット（マナーの象徴） -->
+  <rect x="585" y="199" width="70" height="6" rx="2" fill="#D9A227"/>
+
+  <!-- テキスト -->
+  <text x="600" y="390" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#10171C">座る</text>
+
+
+  <!-- ================= 第3工程：流す ================= -->
+  <!-- ベースサークル -->
+  <circle cx="950" cy="230" r="110" fill="#F2F4F3" stroke="#CDD5D6" stroke-width="3"/>
+  <circle cx="950" cy="230" r="98" fill="none" stroke="#14495B" stroke-width="1.5"/>
+
+  <!-- 桶（手桶）の傾き -->
+  <g transform="translate(930, 180) rotate(-25)">
+    <path d="M -30 0 L 30 0 L 22 36 L -22 36 Z" fill="#14495B"/>
+    <rect x="-35" y="-6" width="70" height="6" rx="3" fill="#CDD5D6"/>
+    <rect x="25" y="10" width="22" height="6" rx="2" fill="#D9A227"/>
+  </g>
+
+  <!-- 流れ出る水・掛水 -->
+  <path d="M 905 185 C 890 200 895 220 900 240" fill="none" stroke="#D9A227" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="905" cy="255" r="4" fill="#D9A227"/>
+  <circle cx="895" cy="270" r="3" fill="#D9A227"/>
+
+  <!-- 水面・波紋 -->
+  <path d="M 915 280 C 935 275 965 275 985 280" fill="none" stroke="#14495B" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 930 292 C 945 288 960 288 975 292" fill="none" stroke="#CDD5D6" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- テキスト -->
+  <text x="950" y="390" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="bold" fill="#10171C">流す</text>
+</svg>
