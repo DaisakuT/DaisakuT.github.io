@@ -1,0 +1,45 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <line x1="230" y1="220" x2="970" y2="220" stroke="#CDD5D6" stroke-width="8" stroke-dasharray="16 12"/>
+  
+  <path d="M 400 220 L 440 220 M 428 208 L 443 220 L 428 232" stroke="#14495B" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 760 220 L 800 220 M 788 208 L 803 220 L 788 232" stroke="#14495B" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g transform="translate(230, 220)">
+    <circle r="85" fill="#CDD5D6"/>
+    <circle r="72" fill="#14495B"/>
+    <rect x="-40" y="-30" width="80" height="16" rx="8" fill="#F2F4F3"/>
+    <rect x="-40" y="-8" width="80" height="16" rx="8" fill="#D9A227"/>
+    <rect x="-40" y="14" width="80" height="16" rx="8" fill="#F2F4F3"/>
+  </g>
+  <circle cx="230" cy="95" r="20" fill="#14495B"/>
+  <text x="230" y="102" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#F2F4F3">1</text>
+  <text x="230" y="355" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C">素材</text>
+
+  <g transform="translate(600, 220)">
+    <circle r="96" fill="none" stroke="#D9A227" stroke-width="4" stroke-dasharray="10 8"/>
+    <circle r="85" fill="#D9A227"/>
+    <circle r="72" fill="#14495B"/>
+    <path d="M -32 -10 A 34 34 0 1 1 22 26" fill="none" stroke="#D9A227" stroke-width="10" stroke-linecap="round"/>
+    <polygon points="26,10 38,32 14,30" fill="#D9A227"/>
+    <circle cx="0" cy="0" r="12" fill="#F2F4F3"/>
+  </g>
+  <circle cx="600" cy="95" r="22" fill="#D9A227"/>
+  <text x="600" y="103" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="bold" fill="#10171C">2</text>
+  <text x="600" y="355" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C">調理</text>
+
+  <g transform="translate(970, 220)">
+    <circle r="85" fill="#CDD5D6"/>
+    <circle r="72" fill="#14495B"/>
+    <rect x="-32" y="-32" width="28" height="28" rx="6" fill="#F2F4F3"/>
+    <rect x="4" y="-32" width="28" height="28" rx="6" fill="#F2F4F3"/>
+    <rect x="-32" y="4" width="28" height="28" rx="6" fill="#F2F4F3"/>
+    <rect x="4" y="4" width="28" height="28" rx="6" fill="#D9A227"/>
+  </g>
+  <circle cx="970" cy="95" r="20" fill="#14495B"/>
+  <text x="970" y="102" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#F2F4F3">3</text>
+  <text x="970" y="355" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C">保存</text>
+
+  <rect x="520" y="420" width="160" height="6" rx="3" fill="#D9A227"/>
+</svg>
