@@ -1,15 +1,24 @@
 ---
 const { page } = Astro.props;
 if (page.lastPage <= 1) return;
+
+// この一覧の起点URL（例: "/" や "/category/sauna/"）を、現在のページのURLから求める。
+// 以前は1ページ目でこの起点が分からず、カテゴリーの「2」が全記事の2ページ目に飛んでいた。
+const withSlash = (u) => (u.endsWith('/') ? u : `${u}/`);
+const current = page.url.current || '/';
+const base = withSlash(page.currentPage === 1 ? current : current.replace(/\/\d+\/?$/, '') || '/');
+const href = (n) => (n === 1 ? base : `${base}${n}/`);
+const prev = page.currentPage > 1 ? href(page.currentPage - 1) : null;
+const next = page.currentPage < page.lastPage ? href(page.currentPage + 1) : null;
+
 // 現在地の前後2ページ分だけ番号を出す
 const nums = [];
 for (let i = 1; i <= page.lastPage; i++) {
   if (i === 1 || i === page.lastPage || Math.abs(i - page.currentPage) <= 2) nums.push(i);
 }
-const href = (n) => (n === 1 ? page.url.first || '/' : `${(page.url.first || '/').replace(/\/$/, '')}/${n}/`);
 ---
 <nav class="pager" aria-label="ページ送り">
-  {page.url.prev ? <a class="pager__arrow" href={page.url.prev} rel="prev">前へ</a> : <span class="pager__arrow is-off">前へ</span>}
+  {prev ? <a class="pager__arrow" href={prev} rel="prev">前へ</a> : <span class="pager__arrow is-off">前へ</span>}
 
   <ol class="pager__nums">
     {nums.map((n, i) => (
@@ -24,5 +33,5 @@ const href = (n) => (n === 1 ? page.url.first || '/' : `${(page.url.first || '/'
     ))}
   </ol>
 
-  {page.url.next ? <a class="pager__arrow" href={page.url.next} rel="next">次へ</a> : <span class="pager__arrow is-off">次へ</span>}
+  {next ? <a class="pager__arrow" href={next} rel="next">次へ</a> : <span class="pager__arrow is-off">次へ</span>}
 </nav>

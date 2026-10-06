@@ -33,7 +33,7 @@ const jsonLd = {
   headline: post.data.title,
   description: post.data.description,
   datePublished: post.data.pubDate.toISOString(),
-  author: { '@type': 'Person', name: SITE.author },
+  author: { '@type': 'Person', name: SITE.author, url: new URL('/about/', Astro.site).href },
   publisher: { '@type': 'Organization', name: SITE.title },
   mainEntityOfPage: new URL(`/blog/${post.id}/`, Astro.site).href,
 };
@@ -68,6 +68,13 @@ const jsonLd = {
     <div class="prose">
       <Content />
     </div>
+
+    <aside class="author" aria-label="この記事を書いた人">
+      <p class="author__label">この記事を書いた人</p>
+      <p class="author__name"><a href="/about/">{SITE.author}</a></p>
+      {SITE.authorBio && <p class="author__bio">{SITE.authorBio}</p>}
+      <p class="author__more"><a href="/about/">運営者について詳しく見る</a></p>
+    </aside>
 
     <div class="ad-slot"><!-- 広告枠（記事下） --></div>
 
