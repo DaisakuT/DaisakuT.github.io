@@ -347,7 +347,7 @@ let body = String(article.body_markdown || "")
 // 当てはまらない記事には何も入りません。
 const SHOP_FILE = process.env.SHOP_FILE || "shop.json";
 
-function buildShopBlock(keyword, title, bodyText) {
+function buildShopBlock(keyword, title, bodyText, category) {
   let conf;
   try {
     conf = JSON.parse(read(SHOP_FILE, "{}"));
@@ -356,6 +356,12 @@ function buildShopBlock(keyword, title, bodyText) {
     return null;
   }
   if (!conf.enabled) return null;
+
+  // shop.json の categories に含まれるカテゴリーの記事にだけ入れる
+  // （旅やサウナの記事に、料理向けのコメントが入ってしまうのを防ぐため）
+  if (Array.isArray(conf.categories) && conf.categories.length && !conf.categories.includes(category)) {
+    return null;
+  }
 
   const items = (conf.items || []).filter((it) => it.url);
   if (!items.length) return null;
@@ -389,7 +395,7 @@ function buildShopBlock(keyword, title, bodyText) {
   };
 }
 
-const shopLink = buildShopBlock(target.keyword, article.title || "", body);
+const shopLink = buildShopBlock(target.keyword, article.title || "", body, toSiteCategory(target.category));
 if (shopLink) {
   const summaryIdx = body.search(/\n##\s*(まとめ|おわりに|さいごに|最後に)/);
   body =

@@ -141,12 +141,20 @@ function ingest(data, file) {
 }
 
 // --- 実行 -------------------------------------------------------------------
-if (!fs.existsSync(RAW_DIR)) {
-  console.log(`${RAW_DIR} がまだありません。SNSのエクスポートを置いてから、もう一度実行してください。`);
-  fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
-  fs.writeFileSync(OUT_FILE, "[]", "utf8");
+// data/raw にエクスポートが無い場合は、すでにある data/posts.json をそのまま使います。
+// （エクスポートには位置情報などが含まれるため、整形後は data/raw を削除して運用します）
+function keepExisting(reason) {
+  if (fs.existsSync(OUT_FILE)) {
+    console.log(`${reason} 既存の ${OUT_FILE} をそのまま使います。`);
+  } else {
+    console.log(`${reason} ${OUT_FILE} もまだありません。SNSのエクスポートを ${RAW_DIR} に置いてください。`);
+    fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
+    fs.writeFileSync(OUT_FILE, "[]", "utf8");
+  }
   process.exit(0);
 }
+
+if (!fs.existsSync(RAW_DIR)) keepExisting(`${RAW_DIR} はありません。`);
 
 const files = walk(RAW_DIR);
 console.log(`${files.length} 個のファイルを検査します...`);
@@ -155,6 +163,8 @@ for (const f of files) {
   const data = parseFile(f);
   if (data) ingest(data, f);
 }
+
+if (!posts.length) keepExisting(`${RAW_DIR} から投稿を読み取れませんでした。`);
 
 posts.sort((a, b) => (a.date < b.date ? 1 : -1)); // 新しい順
 
