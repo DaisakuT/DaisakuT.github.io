@@ -1,0 +1,87 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3" />
+
+  <!-- ガイドラインと接続線 -->
+  <line x1="160" y1="240" x2="1040" y2="240" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6" />
+  <path d="M 380 240 L 440 240" stroke="#14495B" stroke-width="3" stroke-linecap="round" />
+  <polygon points="440,234 452,240 440,246" fill="#14495B" />
+  <path d="M 760 240 L 820 240" stroke="#14495B" stroke-width="3" stroke-linecap="round" />
+  <polygon points="820,234 832,240 820,246" fill="#14495B" />
+
+  <!-- STEP 1: 常温 -->
+  <g transform="translate(260, 240)">
+    <!-- ステップ番号 -->
+    <circle cx="0" cy="-150" r="18" fill="#14495B" />
+    <text x="0" y="-144" fill="#F2F4F3" font-size="14" font-weight="bold" font-family="sans-serif" text-anchor="middle">01</text>
+    
+    <!-- 温度平衡のサークル -->
+    <circle cx="0" cy="0" r="95" fill="none" stroke="#CDD5D6" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#CDD5D6" stroke-width="1.5" stroke-dasharray="4 4" />
+    
+    <!-- ステーキ断面（冷温均一） -->
+    <rect x="-85" y="-50" width="170" height="100" rx="20" fill="#CDD5D6" stroke="#14495B" stroke-width="3" />
+    <!-- 均一化を示す幾何学ライン -->
+    <line x1="-50" y1="-20" x2="50" y2="-20" stroke="#F2F4F3" stroke-width="3" stroke-linecap="round" />
+    <line x1="-60" y1="0" x2="60" y2="0" stroke="#F2F4F3" stroke-width="3" stroke-linecap="round" />
+    <line x1="-50" y1="20" x2="50" y2="20" stroke="#F2F4F3" stroke-width="3" stroke-linecap="round" />
+    <!-- 外気との調和を示す矢印 -->
+    <path d="M 0 -70 L 0 -58" stroke="#14495B" stroke-width="2" stroke-linecap="round" />
+    <path d="M 0 70 L 0 58" stroke="#14495B" stroke-width="2" stroke-linecap="round" />
+    
+    <!-- テキスト -->
+    <text x="0" y="130" fill="#10171C" font-size="24" font-weight="bold" font-family="sans-serif" text-anchor="middle">常温</text>
+  </g>
+
+  <!-- STEP 2: 強火 -->
+  <g transform="translate(600, 240)">
+    <!-- ステップ番号 -->
+    <circle cx="0" cy="-150" r="18" fill="#D9A227" />
+    <text x="0" y="-144" fill="#F2F4F3" font-size="14" font-weight="bold" font-family="sans-serif" text-anchor="middle">02</text>
+
+    <!-- 熱の放射幾何学 -->
+    <path d="M -60 70 L -45 54 M 0 76 L 0 54 M 60 70 L 45 54" stroke="#D9A227" stroke-width="3" stroke-linecap="round" />
+    <polygon points="-70,92 -50,60 -30,92" fill="#D9A227" />
+    <polygon points="-20,96 0,56 20,96" fill="#D9A227" />
+    <polygon points="30,92 50,60 70,92" fill="#D9A227" />
+
+    <!-- ステーキ断面（表面メイラード・中心レア） -->
+    <rect x="-85" y="-50" width="170" height="100" rx="20" fill="#CDD5D6" />
+    <!-- 表面クラスト -->
+    <path d="M -85 -30 L -85 -50 Q -85 -50 -65 -50 L 65 -50 Q 85 -50 85 -30 L 85 -26 L -85 -26 Z" fill="#14495B" />
+    <path d="M -85 30 L -85 50 Q -85 50 -65 50 L 65 50 Q 85 50 85 30 L 85 26 L -85 26 Z" fill="#14495B" />
+    <!-- 外枠 -->
+    <rect x="-85" y="-50" width="170" height="100" rx="20" fill="none" stroke="#14495B" stroke-width="3" />
+    
+    <!-- 強火の熱浸透アクセント -->
+    <line x1="-50" y1="-18" x2="50" y2="-18" stroke="#D9A227" stroke-width="2" stroke-linecap="round" />
+    <line x1="-50" y1="18" x2="50" y2="18" stroke="#D9A227" stroke-width="2" stroke-linecap="round" />
+
+    <!-- テキスト -->
+    <text x="0" y="130" fill="#10171C" font-size="24" font-weight="bold" font-family="sans-serif" text-anchor="middle">強火</text>
+  </g>
+
+  <!-- STEP 3: 余熱 -->
+  <g transform="translate(940, 240)">
+    <!-- ステップ番号 -->
+    <circle cx="0" cy="-150" r="18" fill="#14495B" />
+    <text x="0" y="-144" fill="#F2F4F3" font-size="14" font-weight="bold" font-family="sans-serif" text-anchor="middle">03</text>
+
+    <!-- 余熱保持のドーム -->
+    <path d="M -95 45 C -95 -80, 95 -80, 95 45" fill="none" stroke="#D9A227" stroke-width="2" stroke-dasharray="6 4" />
+
+    <!-- ステーキ断面（完璧なロゼ・中心浸透） -->
+    <!-- 外側クラスト層 -->
+    <rect x="-85" y="-50" width="170" height="100" rx="20" fill="#14495B" />
+    <!-- 内部均一ロゼ層 -->
+    <rect x="-77" y="-42" width="154" height="84" rx="14" fill="#D9A227" />
+    <!-- 旨味の中心核 -->
+    <ellipse cx="0" cy="0" rx="45" ry="22" fill="#F2F4F3" opacity="0.9" />
+    
+    <!-- 内側からの穏やかな熱対流ライン -->
+    <path d="M -25 0 Q 0 -10 25 0 Q 0 10 -25 0 Z" fill="#D9A227" />
+
+    <!-- テキスト -->
+    <text x="0" y="130" fill="#10171C" font-size="24" font-weight="bold" font-family="sans-serif" text-anchor="middle">余熱</text>
+  </g>
+</svg>
