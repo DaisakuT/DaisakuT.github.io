@@ -1,0 +1,42 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3" />
+
+  <!-- 補助グリッド・同心円（空港側・市内側） -->
+  <circle cx="200" cy="250" r="90" fill="none" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6" />
+  <circle cx="1000" cy="250" r="90" fill="none" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6" />
+
+  <!-- 迂回ルート1（上部：タクシー等を表現する遠回り・点線） -->
+  <path d="M 235 210 C 400 90, 800 90, 965 210" fill="none" stroke="#CDD5D6" stroke-width="6" stroke-dasharray="12 12" />
+  <circle cx="600" cy="120" r="14" fill="#CDD5D6" />
+
+  <!-- 迂回ルート2（下部：JR等を表現する乗継・屈折・点線） -->
+  <path d="M 235 290 L 420 380 L 780 380 L 965 290" fill="none" stroke="#CDD5D6" stroke-width="6" stroke-dasharray="12 12" />
+  <circle cx="420" cy="380" r="10" fill="#CDD5D6" />
+  <circle cx="780" cy="380" r="10" fill="#CDD5D6" />
+
+  <!-- 最適メインルート（中央：直通の太いライン） -->
+  <line x1="260" y1="250" x2="940" y2="250" stroke="#14495B" stroke-width="24" stroke-linecap="round" />
+
+  <!-- 直通ライン上の進行矢印アクセント -->
+  <polygon points="340,240 355,250 340,260" fill="#D9A227" />
+  <polygon points="380,240 395,250 380,260" fill="#D9A227" />
+  <polygon points="820,240 835,250 820,260" fill="#D9A227" />
+  <polygon points="860,240 875,250 860,260" fill="#D9A227" />
+
+  <!-- 中央の強調バッジ -->
+  <rect x="460" y="205" width="280" height="90" rx="45" fill="#D9A227" stroke="#F2F4F3" stroke-width="6" />
+  <text x="600" y="259" text-anchor="middle" dominant-baseline="central" fill="#10171C" font-family="sans-serif" font-size="32" font-weight="bold">バスが最適</text>
+
+  <!-- 出発地：空港ノード -->
+  <circle cx="200" cy="250" r="50" fill="#14495B" />
+  <!-- 空港シンボル（幾何学的な矢印・飛行モチーフ） -->
+  <polygon points="200,225 218,265 200,257 182,265" fill="#F2F4F3" />
+  <text x="200" y="340" text-anchor="middle" dominant-baseline="central" fill="#10171C" font-family="sans-serif" font-size="28" font-weight="bold">空港</text>
+
+  <!-- 到着地：市内ノード -->
+  <circle cx="1000" cy="250" r="50" fill="#14495B" />
+  <circle cx="1000" cy="250" r="32" fill="#F2F4F3" />
+  <circle cx="1000" cy="250" r="18" fill="#14495B" />
+  <text x="1000" y="340" text-anchor="middle" dominant-baseline="central" fill="#10171C" font-family="sans-serif" font-size="28" font-weight="bold">市内</text>
+</svg>
