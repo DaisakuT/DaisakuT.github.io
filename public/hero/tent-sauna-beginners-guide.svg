@@ -1,0 +1,58 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <path d="M 380 220 L 440 220" stroke="#CDD5D6" stroke-width="4" stroke-linecap="round"/>
+  <polygon points="436,212 452,220 436,228" fill="#CDD5D6"/>
+
+  <path d="M 750 220 L 810 220" stroke="#CDD5D6" stroke-width="4" stroke-linecap="round"/>
+  <polygon points="806,212 822,220 806,228" fill="#CDD5D6"/>
+
+  <g transform="translate(250, 0)">
+    <circle cx="0" cy="210" r="110" fill="none" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+    <rect x="-70" y="145" width="65" height="90" rx="6" fill="#CDD5D6"/>
+    <rect x="-55" y="137" width="35" height="12" rx="4" fill="#14495B"/>
+    <line x1="-52" y1="170" x2="-22" y2="170" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-52" y1="190" x2="-22" y2="190" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+    <line x1="-52" y1="210" x2="-22" y2="210" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 40 145 C 22 145 8 159 8 177 C 8 200 40 235 40 235 C 40 235 72 200 72 177 C 72 159 58 145 40 145 Z" fill="#D9A227"/>
+    <circle cx="40" cy="175" r="11" fill="#F2F4F3"/>
+    <rect x="-35" y="235" width="70" height="42" rx="6" fill="#14495B"/>
+    <rect x="-15" y="226" width="30" height="12" rx="3" fill="none" stroke="#14495B" stroke-width="4"/>
+
+    <circle cx="0" cy="380" r="16" fill="#14495B"/>
+    <text x="0" y="386" fill="#F2F4F3" font-size="14" font-weight="bold" text-anchor="middle" font-family="sans-serif">1</text>
+    <text x="0" y="425" fill="#10171C" font-size="22" font-weight="bold" text-anchor="middle" font-family="sans-serif">準備</text>
+  </g>
+
+  <g transform="translate(600, 0)">
+    <line x1="-90" y1="240" x2="-145" y2="285" stroke="#CDD5D6" stroke-width="3"/>
+    <line x1="90" y1="240" x2="145" y2="285" stroke="#CDD5D6" stroke-width="3"/>
+    <line x1="-155" y1="285" x2="-135" y2="285" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+    <line x1="135" y1="285" x2="155" y2="285" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+    <polygon points="0,115 -115,285 0,285" fill="#14495B"/>
+    <polygon points="0,115 0,285 115,285" fill="#10171C"/>
+    <polygon points="0,175 -50,285 0,285" fill="#CDD5D6"/>
+    <circle cx="-15" cy="265" r="9" fill="#D9A227"/>
+    <rect x="35" y="90" width="12" height="70" rx="2" fill="#CDD5D6"/>
+    <circle cx="41" cy="72" r="7" fill="#D9A227"/>
+    <circle cx="53" cy="50" r="11" fill="#D9A227"/>
+    <circle cx="43" cy="28" r="6" fill="#D9A227"/>
+
+    <circle cx="0" cy="380" r="16" fill="#14495B"/>
+    <text x="0" y="386" fill="#F2F4F3" font-size="14" font-weight="bold" text-anchor="middle" font-family="sans-serif">2</text>
+    <text x="0" y="425" fill="#10171C" font-size="22" font-weight="bold" text-anchor="middle" font-family="sans-serif">設営</text>
+  </g>
+
+  <g transform="translate(950, 0)">
+    <circle cx="0" cy="180" r="75" fill="none" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+    <path d="M -40 135 C -20 120 20 120 40 135" fill="none" stroke="#CDD5D6" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="0" cy="175" r="44" fill="none" stroke="#D9A227" stroke-width="8"/>
+    <circle cx="0" cy="175" r="18" fill="#14495B"/>
+    <path d="M -80 255 C -40 245 -20 265 20 255 C 60 245 80 265 100 255" fill="none" stroke="#14495B" stroke-width="6" stroke-linecap="round"/>
+    <path d="M -60 280 C -20 270 0 290 40 280 C 65 272 85 285 95 280" fill="none" stroke="#CDD5D6" stroke-width="4" stroke-linecap="round"/>
+
+    <circle cx="0" cy="380" r="16" fill="#14495B"/>
+    <text x="0" y="386" fill="#F2F4F3" font-size="14" font-weight="bold" text-anchor="middle" font-family="sans-serif">3</text>
+    <text x="0" y="425" fill="#10171C" font-size="22" font-weight="bold" text-anchor="middle" font-family="sans-serif">満喫</text>
+  </g>
+</svg>
