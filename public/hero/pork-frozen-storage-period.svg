@@ -1,0 +1,122 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- タイトル -->
+  <text x="600" y="65" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" letter-spacing="6">冷凍保存期間</text>
+
+  <!-- 冷却・冷凍を象徴する幾何学的な背景装飾 -->
+  <g stroke="#CDD5D6" stroke-width="2" fill="none">
+    <line x1="120" y1="90" x2="1080" y2="90"/>
+    <circle cx="600" cy="90" r="4" fill="#CDD5D6"/>
+    <circle cx="300" cy="90" r="4" fill="#CDD5D6"/>
+    <circle cx="900" cy="90" r="4" fill="#CDD5D6"/>
+  </g>
+
+  <!-- ================= 1. ブロック肉（塊）: 保存期間 長 ================= -->
+  <!-- カード背景 -->
+  <rect x="140" y="115" width="280" height="340" rx="12" fill="#FFFFFF" stroke="#CDD5D6" stroke-width="2"/>
+  
+  <!-- 抽象アイコン：塊（ブロック） -->
+  <g transform="translate(210, 140)">
+    <rect x="0" y="0" width="140" height="95" rx="16" fill="#14495B"/>
+    <!-- 冷凍・保護ラップの幾何学的ライン -->
+    <path d="M 0 35 L 140 35 M 0 65 L 140 65" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 4"/>
+    <!-- 結晶モチーフ -->
+    <circle cx="70" cy="48" r="14" fill="none" stroke="#D9A227" stroke-width="3"/>
+    <path d="M 70 28 L 70 68 M 50 48 L 90 48" stroke="#D9A227" stroke-width="3"/>
+  </g>
+
+  <!-- 期間インジケーター（最長） -->
+  <g transform="translate(170, 275)">
+    <!-- タイムラインバー（4段階すべて点灯） -->
+    <rect x="0" y="0" width="220" height="12" rx="6" fill="#CDD5D6"/>
+    <rect x="0" y="0" width="220" height="12" rx="6" fill="#14495B"/>
+    
+    <!-- 目盛りブロック -->
+    <rect x="0" y="30" width="48" height="60" rx="4" fill="#14495B"/>
+    <rect x="57" y="30" width="48" height="60" rx="4" fill="#14495B"/>
+    <rect x="114" y="30" width="48" height="60" rx="4" fill="#14495B"/>
+    <rect x="171" y="30" width="48" height="60" rx="4" fill="#D9A227"/>
+
+    <!-- スケールアイコン -->
+    <circle cx="195" cy="115" r="5" fill="#D9A227"/>
+    <line x1="25" y1="115" x2="195" y2="115" stroke="#14495B" stroke-width="2"/>
+    <circle cx="25" cy="115" r="5" fill="#14495B"/>
+  </g>
+
+
+  <!-- ================= 2. スライス肉（薄切り）: 保存期間 中 ================= -->
+  <!-- カード背景 -->
+  <rect x="460" y="115" width="280" height="340" rx="12" fill="#FFFFFF" stroke="#CDD5D6" stroke-width="2"/>
+
+  <!-- 抽象アイコン：薄切り（層・スライス） -->
+  <g transform="translate(530, 140)">
+    <rect x="0" y="5" width="140" height="20" rx="6" fill="#14495B"/>
+    <rect x="0" y="38" width="140" height="20" rx="6" fill="#14495B"/>
+    <rect x="0" y="71" width="140" height="20" rx="6" fill="#14495B"/>
+    <!-- 冷気のスリット -->
+    <line x1="20" y1="48" x2="120" y2="48" stroke="#CDD5D6" stroke-width="2"/>
+  </g>
+
+  <!-- 期間インジケーター（中間） -->
+  <g transform="translate(490, 275)">
+    <!-- タイムラインバー（半分の長さ） -->
+    <rect x="0" y="0" width="220" height="12" rx="6" fill="#CDD5D6"/>
+    <rect x="0" y="0" width="135" height="12" rx="6" fill="#14495B"/>
+
+    <!-- 目盛りブロック -->
+    <rect x="0" y="30" width="48" height="60" rx="4" fill="#14495B"/>
+    <rect x="57" y="30" width="48" height="60" rx="4" fill="#D9A227"/>
+    <rect x="114" y="30" width="48" height="60" rx="4" fill="#CDD5D6"/>
+    <rect x="171" y="30" width="48" height="60" rx="4" fill="#CDD5D6"/>
+
+    <!-- スケールアイコン -->
+    <line x1="25" y1="115" x2="81" y2="115" stroke="#14495B" stroke-width="2"/>
+    <circle cx="25" cy="115" r="5" fill="#14495B"/>
+    <circle cx="81" cy="115" r="5" fill="#D9A227"/>
+  </g>
+
+
+  <!-- ================= 3. ひき肉（ミンチ）: 保存期間 短 ================= -->
+  <!-- カード背景 -->
+  <rect x="780" y="115" width="280" height="340" rx="12" fill="#FFFFFF" stroke="#CDD5D6" stroke-width="2"/>
+
+  <!-- 抽象アイコン：細粒（ミンチ・グリッド） -->
+  <g transform="translate(850, 140)">
+    <circle cx="15" cy="18" r="10" fill="#14495B"/>
+    <circle cx="48" cy="18" r="10" fill="#14495B"/>
+    <circle cx="81" cy="18" r="10" fill="#14495B"/>
+    <circle cx="114" cy="18" r="10" fill="#14495B"/>
+
+    <circle cx="15" cy="48" r="10" fill="#14495B"/>
+    <circle cx="48" cy="48" r="10" fill="#CDD5D6"/>
+    <circle cx="81" cy="48" r="10" fill="#CDD5D6"/>
+    <circle cx="114" cy="48" r="10" fill="#14495B"/>
+
+    <circle cx="15" cy="78" r="10" fill="#14495B"/>
+    <circle cx="48" cy="78" r="10" fill="#14495B"/>
+    <circle cx="81" cy="78" r="10" fill="#14495B"/>
+    <circle cx="114" cy="78" r="10" fill="#14495B"/>
+  </g>
+
+  <!-- 期間インジケーター（最短） -->
+  <g transform="translate(810, 275)">
+    <!-- タイムラインバー（短い） -->
+    <rect x="0" y="0" width="220" height="12" rx="6" fill="#CDD5D6"/>
+    <rect x="0" y="0" width="60" height="12" rx="6" fill="#D9A227"/>
+
+    <!-- 目盛りブロック -->
+    <rect x="0" y="30" width="48" height="60" rx="4" fill="#D9A227"/>
+    <rect x="57" y="30" width="48" height="60" rx="4" fill="#CDD5D6"/>
+    <rect x="114" y="30" width="48" height="60" rx="4" fill="#CDD5D6"/>
+    <rect x="171" y="30" width="48" height="60" rx="4" fill="#CDD5D6"/>
+
+    <!-- スケールアイコン -->
+    <circle cx="24" cy="115" r="5" fill="#D9A227"/>
+  </g>
+
+  <!-- カード間を繋ぐ変化の流れ（減衰の矢印モチーフ） -->
+  <path d="M 430 280 L 450 280 M 445 275 L 450 280 L 445 285" stroke="#CDD5D6" stroke-width="2" fill="none"/>
+  <path d="M 750 280 L 770 280 M 765 275 L 770 280 L 765 285" stroke="#CDD5D6" stroke-width="2" fill="none"/>
+</svg>
