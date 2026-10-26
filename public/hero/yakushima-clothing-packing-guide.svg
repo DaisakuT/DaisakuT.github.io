@@ -1,0 +1,47 @@
+<svg viewBox="0 0 1200 500">
+  <rect width="1200" height="500" fill="#F2F4F3" />
+
+  <path d="M 370 240 L 440 240" stroke="#CDD5D6" stroke-width="4" stroke-dasharray="8 8" />
+  <polygon points="445,240 433,233 433,247" fill="#CDD5D6" />
+
+  <path d="M 760 240 L 830 240" stroke="#CDD5D6" stroke-width="4" stroke-dasharray="8 8" />
+  <polygon points="835,240 823,233 823,247" fill="#CDD5D6" />
+
+  <g transform="translate(40, 0)">
+    <line x1="130" y1="150" x2="130" y2="330" stroke="#CDD5D6" stroke-width="4" />
+    
+    <rect x="160" y="120" width="180" height="60" rx="8" fill="#D9A227" />
+    <circle cx="130" cy="150" r="8" fill="#D9A227" />
+    
+    <rect x="160" y="210" width="180" height="60" rx="8" fill="#14495B" />
+    <circle cx="130" cy="240" r="8" fill="#14495B" />
+    
+    <rect x="160" y="300" width="180" height="60" rx="8" fill="#CDD5D6" />
+    <circle cx="130" cy="330" r="8" fill="#CDD5D6" />
+
+    <text x="230" y="420" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C">三層構造</text>
+  </g>
+
+  <g transform="translate(600, 240)">
+    <circle cx="0" cy="0" r="110" fill="none" stroke="#CDD5D6" stroke-width="8" />
+    <path d="M -90 -30 A 100 100 0 0 1 90 -30" fill="none" stroke="#D9A227" stroke-width="12" stroke-linecap="round" />
+    <polygon points="0,-40 -60,60 60,60" fill="#14495B" />
+    <circle cx="-40" cy="-70" r="7" fill="#D9A227" />
+    <circle cx="0" cy="-90" r="9" fill="#D9A227" />
+    <circle cx="40" cy="-70" r="7" fill="#D9A227" />
+    
+    <text x="0" y="180" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C">雨対策</text>
+  </g>
+
+  <g transform="translate(860, 0)">
+    <rect x="40" y="110" width="200" height="260" rx="16" fill="none" stroke="#14495B" stroke-width="6" />
+    <rect x="60" y="88" width="80" height="22" rx="6" fill="#14495B" />
+    
+    <rect x="58" y="130" width="76" height="110" rx="6" fill="#14495B" />
+    <rect x="144" y="130" width="76" height="50" rx="6" fill="#D9A227" />
+    <rect x="144" y="190" width="76" height="50" rx="6" fill="#CDD5D6" />
+    <rect x="58" y="250" width="162" height="100" rx="6" fill="#CDD5D6" />
+
+    <text x="140" y="420" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#10171C">準備</text>
+  </g>
+</svg>
