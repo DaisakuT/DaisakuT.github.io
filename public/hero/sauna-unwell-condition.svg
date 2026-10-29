@@ -1,0 +1,73 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- 3段階の判断基準カード -->
+
+  <!-- Card 1: 危険（入らない・発熱・二日酔い） -->
+  <g>
+    <rect x="80" y="55" width="320" height="390" rx="24" fill="#CDD5D6"/>
+    <rect x="104" y="79" width="272" height="342" rx="16" fill="#F2F4F3"/>
+    
+    <!-- 幾何学モチーフ：過剰な熱と遮断 -->
+    <circle cx="240" cy="210" r="75" fill="#CDD5D6"/>
+    
+    <!-- 激しい上昇熱気 -->
+    <path d="M210 240 Q218 215 210 190 T210 145" fill="none" stroke="#14495B" stroke-width="6" stroke-linecap="round"/>
+    <path d="M240 245 Q248 220 240 195 T240 140" fill="none" stroke="#14495B" stroke-width="6" stroke-linecap="round"/>
+    <path d="M270 240 Q278 215 270 190 T270 145" fill="none" stroke="#14495B" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- 警告・禁止クロス -->
+    <circle cx="240" cy="210" r="50" fill="none" stroke="#D9A227" stroke-width="8"/>
+    <line x1="205" y1="175" x2="275" y2="245" stroke="#D9A227" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- テキスト -->
+    <text x="240" y="375" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" text-anchor="middle">危険</text>
+  </g>
+
+  <!-- Card 2: 加減（軽い疲れ・短時間・低刺激） -->
+  <g>
+    <rect x="440" y="55" width="320" height="390" rx="24" fill="#CDD5D6"/>
+    <rect x="464" y="79" width="272" height="342" rx="16" fill="#F2F4F3"/>
+    
+    <!-- 幾何学モチーフ：調節スライダーと控えめな熱量 -->
+    <circle cx="600" cy="210" r="75" fill="#CDD5D6"/>
+    
+    <!-- スライダートラック -->
+    <line x1="545" y1="210" x2="655" y2="210" stroke="#F2F4F3" stroke-width="12" stroke-linecap="round"/>
+    <line x1="545" y1="210" x2="585" y2="210" stroke="#14495B" stroke-width="12" stroke-linecap="round"/>
+    
+    <!-- 低めの位置で止めたノブ -->
+    <circle cx="585" cy="210" r="18" fill="#D9A227"/>
+    
+    <!-- 穏やかな単一の熱気 -->
+    <path d="M585 175 Q592 160 585 145" fill="none" stroke="#14495B" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- 目盛り点 -->
+    <circle cx="620" cy="210" r="3" fill="#14495B"/>
+    <circle cx="645" cy="210" r="3" fill="#14495B"/>
+
+    <!-- テキスト -->
+    <text x="600" y="375" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" text-anchor="middle">加減</text>
+  </g>
+
+  <!-- Card 3: ぬる湯（不感温度・無理のない安息） -->
+  <g>
+    <rect x="800" y="55" width="320" height="390" rx="24" fill="#CDD5D6"/>
+    <rect x="824" y="79" width="272" height="342" rx="16" fill="#F2F4F3"/>
+    
+    <!-- 幾何学モチーフ：平穏な水面と安心の調和 -->
+    <circle cx="960" cy="210" r="75" fill="#14495B"/>
+    
+    <!-- 優しい温浴の核 -->
+    <circle cx="960" cy="165" r="14" fill="#D9A227"/>
+
+    <!-- 穏やかな湯面（水平の波） -->
+    <path d="M915 200 C935 195 945 205 965 200 C985 195 995 205 1005 200" fill="none" stroke="#F2F4F3" stroke-width="5" stroke-linecap="round"/>
+    <path d="M920 220 C940 215 950 225 970 220 C990 215 1000 225 1000 220" fill="none" stroke="#CDD5D6" stroke-width="5" stroke-linecap="round"/>
+    <path d="M930 240 C945 236 955 244 970 240 C985 236 990 244 990 240" fill="none" stroke="#F2F4F3" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- テキスト -->
+    <text x="960" y="375" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" text-anchor="middle">ぬる湯</text>
+  </g>
+</svg>
