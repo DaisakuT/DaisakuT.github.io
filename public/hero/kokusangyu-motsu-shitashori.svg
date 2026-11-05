@@ -1,0 +1,68 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <line x1="120" y1="230" x2="1080" y2="230" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <path d="M 330 230 L 470 230" stroke="#14495B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 460 218 L 475 230 L 460 242" fill="none" stroke="#14495B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M 730 230 L 870 230" stroke="#D9A227" stroke-width="6" stroke-linecap="round"/>
+  <path d="M 860 218 L 875 230 L 860 242" fill="none" stroke="#D9A227" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g transform="translate(230, 230)">
+    <circle r="90" fill="none" stroke="#CDD5D6" stroke-width="4"/>
+    <rect x="-65" y="-65" width="130" height="130" fill="none" stroke="#10171C" stroke-width="2" stroke-dasharray="6 6"/>
+    <circle cx="-30" cy="-25" r="24" fill="#CDD5D6"/>
+    <rect x="10" y="-45" width="35" height="35" rx="6" fill="#10171C"/>
+    <circle cx="25" cy="25" r="30" fill="#14495B"/>
+    <rect x="-50" y="15" width="32" height="32" rx="8" fill="#CDD5D6"/>
+    <circle cx="-5" cy="-5" r="16" fill="#D9A227"/>
+  </g>
+
+  <g transform="translate(600, 230)">
+    <circle r="95" fill="#F2F4F3" stroke="#14495B" stroke-width="4"/>
+    <circle r="80" fill="none" stroke="#CDD5D6" stroke-width="2"/>
+
+    <path d="M 0 -35 L 0 -115" stroke="#10171C" stroke-width="3" stroke-dasharray="4 4"/>
+    <polygon points="0,-122 -7,-110 7,-110" fill="#10171C"/>
+    <circle cx="-15" cy="-85" r="6" fill="#10171C"/>
+    <circle cx="15" cy="-100" r="4" fill="#10171C"/>
+
+    <path d="M 0 35 L 0 115" stroke="#CDD5D6" stroke-width="3" stroke-dasharray="4 4"/>
+    <polygon points="0,122 -7,110 7,110" fill="#CDD5D6"/>
+    <circle cx="14" cy="85" r="7" fill="#CDD5D6"/>
+    <circle cx="-16" cy="100" r="5" fill="#CDD5D6"/>
+
+    <path d="M -50 -20 C -20 -45 20 -45 50 -20 C 20 5 -20 5 -50 -20 Z" fill="#14495B"/>
+    <path d="M -50 20 C -20 -5 20 -5 50 20 C 20 45 -20 45 -50 20 Z" fill="#14495B"/>
+    <circle r="24" fill="#D9A227"/>
+  </g>
+
+  <g transform="translate(970, 230)">
+    <circle r="95" fill="none" stroke="#D9A227" stroke-width="2" stroke-dasharray="6 6"/>
+    <circle cx="0" cy="0" r="80" fill="#14495B"/>
+    <circle cx="-15" cy="-15" r="50" fill="#D9A227"/>
+    <circle cx="20" cy="15" r="35" fill="#F2F4F3"/>
+    <circle cx="-5" cy="-5" r="22" fill="#14495B"/>
+    <circle cx="55" cy="-45" r="10" fill="#D9A227"/>
+    <circle cx="-60" cy="40" r="8" fill="#D9A227"/>
+    <circle cx="45" cy="50" r="6" fill="#14495B"/>
+  </g>
+
+  <g transform="translate(230, 95)">
+    <rect x="-45" y="-18" width="90" height="36" rx="18" fill="#CDD5D6"/>
+    <text x="0" y="6" font-family="sans-serif" font-size="15" font-weight="bold" fill="#10171C" text-anchor="middle">STEP 1</text>
+  </g>
+  <g transform="translate(600, 95)">
+    <rect x="-45" y="-18" width="90" height="36" rx="18" fill="#14495B"/>
+    <text x="0" y="6" font-family="sans-serif" font-size="15" font-weight="bold" fill="#F2F4F3" text-anchor="middle">STEP 2</text>
+  </g>
+  <g transform="translate(970, 95)">
+    <rect x="-45" y="-18" width="90" height="36" rx="18" fill="#D9A227"/>
+    <text x="0" y="6" font-family="sans-serif" font-size="15" font-weight="bold" fill="#10171C" text-anchor="middle">STEP 3</text>
+  </g>
+
+  <text x="230" y="390" font-family="sans-serif" font-size="26" font-weight="bold" fill="#10171C" text-anchor="middle">生もつ</text>
+  <text x="600" y="390" font-family="sans-serif" font-size="26" font-weight="bold" fill="#10171C" text-anchor="middle">下処理</text>
+  <text x="970" y="390" font-family="sans-serif" font-size="26" font-weight="bold" fill="#10171C" text-anchor="middle">極上もつ</text>
+</svg>
