@@ -1,0 +1,57 @@
+<svg viewBox="0 0 1200 500">
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- 背景の構造線・軌道 -->
+  <line x1="120" y1="210" x2="1080" y2="210" stroke="#CDD5D6" stroke-width="2"/>
+  <line x1="600" y1="60" x2="600" y2="360" stroke="#CDD5D6" stroke-width="2"/>
+  <circle cx="600" cy="210" r="180" fill="none" stroke="#CDD5D6" stroke-width="1" stroke-dasharray="6 6"/>
+  <circle cx="600" cy="210" r="150" fill="none" stroke="#CDD5D6" stroke-width="2"/>
+
+  <!-- 左：日常・多彩なメニュー（幾何学的な展開） -->
+  <g transform="translate(280, 210)">
+    <circle cx="0" cy="0" r="70" fill="#CDD5D6"/>
+    <circle cx="0" cy="0" r="54" fill="#14495B"/>
+    <rect x="-24" y="-24" width="48" height="48" fill="none" stroke="#F2F4F3" stroke-width="3" transform="rotate(45)"/>
+    <circle cx="0" cy="0" r="8" fill="#D9A227"/>
+    <!-- サテライト（そば・カレー等の気軽な広がり） -->
+    <line x1="-95" y1="0" x2="-70" y2="0" stroke="#14495B" stroke-width="3"/>
+    <circle cx="-105" cy="0" r="7" fill="#D9A227"/>
+    <line x1="0" y1="-95" x2="0" y2="-70" stroke="#14495B" stroke-width="3"/>
+    <circle cx="0" cy="-105" r="7" fill="#14495B"/>
+    <line x1="0" y1="70" x2="0" y2="95" stroke="#14495B" stroke-width="3"/>
+    <circle cx="0" cy="105" r="7" fill="#14495B"/>
+  </g>
+
+  <!-- 中央：天文館のコア（天体・交差点・厳選された食のシンボル） -->
+  <g transform="translate(600, 210)">
+    <circle cx="0" cy="0" r="110" fill="#14495B"/>
+    <circle cx="0" cy="0" r="92" fill="none" stroke="#D9A227" stroke-width="2" stroke-dasharray="8 6"/>
+    <circle cx="0" cy="0" r="74" fill="#F2F4F3"/>
+    <!-- 天文・方位・食材の交差を象徴するスタークロス -->
+    <path d="M 0 -58 L 14 -14 L 58 0 L 14 14 L 0 58 L -14 14 L -58 0 L -14 -14 Z" fill="#14495B"/>
+    <path d="M 0 -40 L 9 -9 L 40 0 L 9 9 L 0 40 L -9 9 L -40 0 L -9 -9 Z" fill="#D9A227"/>
+    <circle cx="0" cy="0" r="8" fill="#F2F4F3"/>
+  </g>
+
+  <!-- 右：ハレ・特別感（桜島どり・黒豚等の名店コース） -->
+  <g transform="translate(920, 210)">
+    <circle cx="0" cy="0" r="70" fill="#CDD5D6"/>
+    <circle cx="0" cy="0" r="54" fill="#14495B"/>
+    <!-- 上質さを表す多重サークルと放射 -->
+    <circle cx="0" cy="0" r="38" fill="none" stroke="#D9A227" stroke-width="4"/>
+    <circle cx="0" cy="0" r="22" fill="#D9A227"/>
+    <circle cx="0" cy="0" r="8" fill="#F2F4F3"/>
+    <!-- 王冠状の厳選アクセント -->
+    <polygon points="0,-72 -12,-88 0,-84 12,-88" fill="#D9A227"/>
+    <polygon points="72,0 88,-12 84,0 88,12" fill="#D9A227"/>
+    <polygon points="0,72 -12,88 0,84 12,88" fill="#D9A227"/>
+  </g>
+
+  <!-- 接続ノード（選択・ナビゲーションのステップ） -->
+  <circle cx="440" cy="210" r="6" fill="#D9A227"/>
+  <circle cx="760" cy="210" r="6" fill="#D9A227"/>
+
+  <!-- 文字要素（合計8文字） -->
+  <text x="600" y="415" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" letter-spacing="8">天文館</text>
+  <text x="600" y="452" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="normal" fill="#14495B" letter-spacing="6">厳選ランチ</text>
+</svg>
