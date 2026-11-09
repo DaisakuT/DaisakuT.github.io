@@ -1,0 +1,56 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="500" fill="#F2F4F3" />
+
+  <!-- 背景接続ライン -->
+  <line x1="220" y1="230" x2="980" y2="230" stroke="#CDD5D6" stroke-width="6" stroke-dasharray="8 8" />
+
+  <!-- ステップ移行の矢印 -->
+  <g fill="#14495B">
+    <path d="M 430 220 L 450 230 L 430 240 Z" />
+    <path d="M 750 220 L 770 230 L 750 240 Z" />
+  </g>
+
+  <!-- STEP 1: 洗う（水洗い・不純物除去） -->
+  <g transform="translate(220, 230)">
+    <!-- 外枠構造 -->
+    <circle r="90" fill="#F2F4F3" stroke="#CDD5D6" stroke-width="4" />
+    <circle r="72" fill="#CDD5D6" />
+    <!-- 水流・洗浄の幾何学パターン -->
+    <path d="M -45 -15 C -25 -40, 25 -40, 45 -15 C 25 10, -25 10, -45 -15 Z" fill="#14495B" />
+    <path d="M -35 20 C -15 0, 15 0, 35 20 C 15 40, -15 40, -35 20 Z" fill="#F2F4F3" />
+    <!-- 水滴モチーフ -->
+    <circle cx="-25" cy="-45" r="7" fill="#14495B" />
+    <circle cx="20" cy="-50" r="5" fill="#14495B" />
+    <circle cx="45" cy="15" r="6" fill="#14495B" />
+  </g>
+  <text x="220" y="375" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C">洗う</text>
+
+  <!-- STEP 2: 茹でる（下ゆで・熱による余分な脂と臭み抜き） -->
+  <g transform="translate(590, 230)">
+    <!-- 外枠構造 -->
+    <circle r="90" fill="#F2F4F3" stroke="#14495B" stroke-width="4" />
+    <circle r="72" fill="#14495B" />
+    <!-- 対流・熱の幾何学ウェーブ -->
+    <path d="M -40 25 C -20 25, -20 -25, 0 -25 C 20 -25, 20 25, 40 25" fill="none" stroke="#D9A227" stroke-width="8" stroke-linecap="round" />
+    <path d="M -40 0 C -20 0, -20 -50, 0 -50 C 20 -50, 20 0, 40 0" fill="none" stroke="#F2F4F3" stroke-width="6" stroke-linecap="round" />
+    <circle cx="0" cy="35" r="8" fill="#D9A227" />
+    <circle cx="-30" cy="-25" r="5" fill="#CDD5D6" />
+    <circle cx="30" cy="-25" r="5" fill="#CDD5D6" />
+  </g>
+  <text x="590" y="375" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C">茹でる</text>
+
+  <!-- STEP 3: 旨味（ぷりぷり食感・純度の高い旨味の完成） -->
+  <g transform="translate(960, 230)">
+    <!-- 外枠構造・凝縮の輝き -->
+    <circle r="100" fill="#F2F4F3" stroke="#D9A227" stroke-width="3" stroke-dasharray="6 6" />
+    <circle r="85" fill="#D9A227" />
+    <!-- ぷりぷりとしたモツの幾何学的表現 -->
+    <circle cx="-20" cy="-15" r="32" fill="#F2F4F3" />
+    <circle cx="20" cy="-15" r="32" fill="#F2F4F3" />
+    <circle cx="0" cy="20" r="35" fill="#F2F4F3" />
+    <!-- 中心の上質な脂・旨味核 -->
+    <circle cx="0" cy="0" r="22" fill="#14495B" />
+    <circle cx="4" cy="-4" r="7" fill="#D9A227" />
+  </g>
+  <text x="960" y="375" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C">旨味</text>
+</svg>
