@@ -1,0 +1,65 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- 上下ガイドライン -->
+  <line x1="80" y1="50" x2="1120" y2="50" stroke="#CDD5D6" stroke-width="2"/>
+  <line x1="80" y1="450" x2="1120" y2="450" stroke="#CDD5D6" stroke-width="2"/>
+
+  <!-- 接続ライン（パス） -->
+  <!-- 上ルート (カレー/スパイス) -->
+  <path d="M 220 250 L 340 250 C 420 250 420 140 500 140 L 760 140 C 840 140 840 250 920 250 L 980 250" fill="none" stroke="#D9A227" stroke-width="6"/>
+  
+  <!-- 中ルート (蕎麦/伝統) -->
+  <path d="M 220 250 L 980 250" fill="none" stroke="#14495B" stroke-width="6"/>
+  
+  <!-- 下ルート (コース/贅沢) -->
+  <path d="M 220 250 L 340 250 C 420 250 420 360 500 360 L 760 360 C 840 360 840 250 920 250 L 980 250" fill="none" stroke="#CDD5D6" stroke-width="6"/>
+
+  <!-- 左ノード：起点（天文館） -->
+  <g transform="translate(220, 250)">
+    <circle cx="0" cy="0" r="85" fill="#CDD5D6"/>
+    <circle cx="0" cy="0" r="75" fill="#14495B"/>
+    <polygon points="0,-45 39,0 0,45 -39,0" fill="#D9A227"/>
+    <circle cx="0" cy="0" r="35" fill="#14495B"/>
+    <text x="0" y="8" font-family="sans-serif" font-size="22" font-weight="bold" fill="#F2F4F3" text-anchor="middle">天文館</text>
+  </g>
+
+  <!-- 中央ノード上：スパイスカレー象徴 -->
+  <g transform="translate(630, 140)">
+    <rect x="-70" y="-45" width="140" height="90" rx="16" fill="#F2F4F3" stroke="#D9A227" stroke-width="4"/>
+    <polygon points="0,-25 25,20 -25,20" fill="#D9A227"/>
+    <polygon points="0,-10 15,18 -15,18" fill="#14495B"/>
+    <circle cx="0" cy="3" r="5" fill="#F2F4F3"/>
+  </g>
+
+  <!-- 中央ノード中：蕎麦象徴 -->
+  <g transform="translate(630, 250)">
+    <rect x="-70" y="-45" width="140" height="90" rx="16" fill="#F2F4F3" stroke="#14495B" stroke-width="4"/>
+    <rect x="-30" y="-22" width="10" height="44" rx="5" fill="#14495B"/>
+    <rect x="-5" y="-22" width="10" height="44" rx="5" fill="#D9A227"/>
+    <rect x="20" y="-22" width="10" height="44" rx="5" fill="#14495B"/>
+  </g>
+
+  <!-- 中央ノード下：コース料理象徴 -->
+  <g transform="translate(630, 360)">
+    <rect x="-70" y="-45" width="140" height="90" rx="16" fill="#F2F4F3" stroke="#CDD5D6" stroke-width="4"/>
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#14495B" stroke-width="4"/>
+    <circle cx="0" cy="0" r="16" fill="#D9A227"/>
+    <circle cx="0" cy="0" r="6" fill="#10171C"/>
+  </g>
+
+  <!-- 右ノード：体験・到達（絶品ランチ） -->
+  <g transform="translate(980, 250)">
+    <circle cx="0" cy="0" r="92" fill="none" stroke="#D9A227" stroke-width="3" stroke-dasharray="8 6"/>
+    <circle cx="0" cy="0" r="78" fill="#D9A227"/>
+    <circle cx="0" cy="0" r="66" fill="#14495B"/>
+    <text x="0" y="8" font-family="sans-serif" font-size="22" font-weight="bold" fill="#F2F4F3" text-anchor="middle">絶品ランチ</text>
+  </g>
+
+  <!-- 装飾幾何学エレメント -->
+  <circle cx="100" cy="250" r="6" fill="#14495B"/>
+  <circle cx="1100" cy="250" r="6" fill="#D9A227"/>
+  <polygon points="630,35 638,50 622,50" fill="#D9A227"/>
+  <polygon points="630,465 638,450 622,450" fill="#14495B"/>
+</svg>
