@@ -1,0 +1,123 @@
+<svg viewBox="0 0 1200 500">
+  <!-- 背景 -->
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- 中央区切り線 -->
+  <line x1="600" y1="60" x2="600" y2="440" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="8 8"/>
+  <circle cx="600" cy="250" r="12" fill="#F2F4F3" stroke="#CDD5D6" stroke-width="2"/>
+  <circle cx="600" cy="250" r="4" fill="#D9A227"/>
+
+  <!-- ベースライン（テーブル面） -->
+  <line x1="120" y1="410" x2="480" y2="410" stroke="#14495B" stroke-width="2"/>
+  <line x1="720" y1="410" x2="1080" y2="410" stroke="#14495B" stroke-width="2"/>
+
+  <!-- ================= 左エリア: お湯割り ================= -->
+  <!-- タイトル -->
+  <text x="300" y="80" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" letter-spacing="4">お湯割り</text>
+
+  <!-- 比率インジケーター（6:4） -->
+  <g transform="translate(150, 160)">
+    <!-- 上部: 焼酎 (4割) -->
+    <rect x="0" y="0" width="16" height="96" fill="#14495B"/>
+    <!-- 下部: お湯 (6割) -->
+    <rect x="0" y="100" width="16" height="144" fill="#CDD5D6"/>
+    <!-- 比率境界ポインター -->
+    <polygon points="26,98 34,93 34,103" fill="#D9A227"/>
+    <!-- 目盛りライン -->
+    <line x1="-8" y1="0" x2="20" y2="0" stroke="#14495B" stroke-width="2"/>
+    <line x1="-8" y1="98" x2="20" y2="98" stroke="#D9A227" stroke-width="2"/>
+    <line x1="-8" y1="244" x2="20" y2="244" stroke="#CDD5D6" stroke-width="2"/>
+  </g>
+
+  <!-- ロック/お湯割り用タンブラー幾何学 -->
+  <g transform="translate(300, 280)">
+    <!-- 液体ベース -->
+    <clipPath id="hotGlassClip">
+      <polygon points="-90,-110 90,-110 75,126 -75,126"/>
+    </clipPath>
+    
+    <!-- 液体描画: 下にお湯、上に焼酎（注ぎ順とお湯先・焼酎後の自然対流） -->
+    <g clip-path="url(#hotGlassClip)">
+      <!-- 下層: お湯 (60%) -->
+      <rect x="-100" y="-14" width="200" height="150" fill="#CDD5D6"/>
+      <!-- 上層: 焼酎 (40%) -->
+      <rect x="-100" y="-110" width="200" height="96" fill="#14495B"/>
+      <!-- 黄金比境界線 -->
+      <line x1="-100" y1="-14" x2="100" y2="-14" stroke="#D9A227" stroke-width="3"/>
+      <!-- 自然対流を示す幾何学アーク -->
+      <path d="M -30,40 A 25,25 0 0,1 -30,-40" fill="none" stroke="#F2F4F3" stroke-width="3"/>
+      <polygon points="-30,-45 -22,-36 -38,-36" fill="#F2F4F3"/>
+      <path d="M 30,-40 A 25,25 0 0,1 30,40" fill="none" stroke="#D9A227" stroke-width="3"/>
+      <polygon points="30,45 22,36 38,36" fill="#D9A227"/>
+    </g>
+
+    <!-- グラス外枠 -->
+    <polygon points="-90,-110 90,-110 75,126 -75,126" fill="none" stroke="#14495B" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M -96,-110 L 96,-110" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- ================= 右エリア: 炭酸割り ================= -->
+  <!-- タイトル -->
+  <text x="900" y="80" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" letter-spacing="4">炭酸割り</text>
+
+  <!-- トールグラス幾何学 -->
+  <g transform="translate(900, 275)">
+    <!-- 液体ベース -->
+    <clipPath id="sodaGlassClip">
+      <polygon points="-65,-135 65,-135 55,131 -55,131"/>
+    </clipPath>
+
+    <!-- 液体描画: 下に焼酎、上に炭酸、氷の浮遊 -->
+    <g clip-path="url(#sodaGlassClip)">
+      <!-- 炭酸層 (上部 65%) -->
+      <rect x="-80" y="-135" width="160" height="180" fill="#CDD5D6"/>
+      <!-- 焼酎層 (下部 35%) -->
+      <rect x="-80" y="45" width="160" height="90" fill="#14495B"/>
+      <!-- 境界線 -->
+      <line x1="-80" y1="45" x2="80" y2="45" stroke="#D9A227" stroke-width="3"/>
+
+      <!-- 幾何学の角氷 -->
+      <rect x="-35" y="-70" width="46" height="46" rx="4" transform="rotate(20 -12 -47)" fill="#F2F4F3" stroke="#14495B" stroke-width="2"/>
+      <rect x="0" y="-10" width="42" height="42" rx="4" transform="rotate(-15 21 11)" fill="#F2F4F3" stroke="#14495B" stroke-width="2"/>
+      <rect x="-30" y="40" width="40" height="40" rx="4" transform="rotate(10 -10 60)" fill="#F2F4F3" stroke="#14495B" stroke-width="2"/>
+
+      <!-- 立ち上る炭酸の気泡 -->
+      <circle cx="-15" cy="20" r="4" fill="#D9A227"/>
+      <circle cx="25" cy="-35" r="5" fill="#D9A227"/>
+      <circle cx="-35" cy="-90" r="3" fill="#D9A227"/>
+      <circle cx="10" cy="-110" r="6" fill="#D9A227"/>
+      <circle cx="-18" cy="-60" r="2.5" fill="#D9A227"/>
+      <circle cx="35" cy="15" r="3.5" fill="#D9A227"/>
+      <circle cx="-5" cy="-25" r="4" fill="#D9A227"/>
+    </g>
+
+    <!-- グラス外枠 -->
+    <polygon points="-65,-135 65,-135 55,131 -55,131" fill="none" stroke="#14495B" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M -72,-135 L 72,-135" stroke="#14495B" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- 比率インジケーター（4:6） -->
+  <g transform="translate(1030, 140)">
+    <!-- 上部: 炭酸 (6.5割) -->
+    <rect x="0" y="0" width="16" height="180" fill="#CDD5D6"/>
+    <!-- 下部: 焼酎 (3.5割) -->
+    <rect x="0" y="184" width="16" height="86" fill="#14495B"/>
+    <!-- 比率境界ポインター -->
+    <polygon points="-10,182 -18,177 -18,187" fill="#D9A227"/>
+    <!-- 目盛りライン -->
+    <line x1="-4" y1="0" x2="24" y2="0" stroke="#CDD5D6" stroke-width="2"/>
+    <line x1="-4" y1="182" x2="24" y2="182" stroke="#D9A227" stroke-width="2"/>
+    <line x1="-4" y1="270" x2="24" y2="270" stroke="#14495B" stroke-width="2"/>
+  </g>
+
+  <!-- 幾何学的アクセント（注ぎ順・温度の抽象表現） -->
+  <!-- 左: 温熱・対流の波紋 -->
+  <circle cx="300" cy="445" r="3" fill="#D9A227"/>
+  <circle cx="280" cy="445" r="3" fill="#D9A227"/>
+  <circle cx="320" cy="445" r="3" fill="#D9A227"/>
+
+  <!-- 右: 冷却・氷の幾何学点 -->
+  <polygon points="900,440 904,448 896,448" fill="#14495B"/>
+  <polygon points="880,440 884,448 876,448" fill="#14495B"/>
+  <polygon points="920,440 924,448 916,448" fill="#14495B"/>
+</svg>
