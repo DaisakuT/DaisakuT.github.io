@@ -1,0 +1,86 @@
+<svg viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="500" fill="#F2F4F3"/>
+
+  <!-- Column Stage Frames -->
+  <rect x="70" y="50" width="300" height="400" rx="20" fill="none" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+  <rect x="450" y="50" width="300" height="400" rx="20" fill="none" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+  <rect x="830" y="50" width="300" height="400" rx="20" fill="none" stroke="#CDD5D6" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <!-- Flow Arrows -->
+  <path d="M 370 230 L 450 230" stroke="#D9A227" stroke-width="4" stroke-dasharray="8 4"/>
+  <polygon points="442,222 450,230 442,238" fill="#D9A227"/>
+
+  <path d="M 750 230 L 830 230" stroke="#D9A227" stroke-width="4" stroke-dasharray="8 4"/>
+  <polygon points="822,222 830,230 822,238" fill="#D9A227"/>
+
+  <!-- STAGE 1: BULK MINCE (大容量) -->
+  <g transform="translate(220, 210)">
+    <!-- Main Mass Container -->
+    <circle cx="0" cy="0" r="95" fill="#14495B"/>
+    <!-- Abstract Granular Layer -->
+    <circle cx="-35" cy="-35" r="28" fill="#D9A227"/>
+    <circle cx="30" cy="-40" r="22" fill="#CDD5D6"/>
+    <circle cx="-40" cy="30" r="20" fill="#CDD5D6"/>
+    <circle cx="15" cy="20" r="35" fill="#F2F4F3"/>
+    <circle cx="45" cy="35" r="14" fill="#D9A227"/>
+    <circle cx="-10" cy="-10" r="18" fill="#14495B"/>
+    <circle cx="-15" cy="35" r="12" fill="#10171C"/>
+  </g>
+  <text x="220" y="410" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" text-anchor="middle">大容量</text>
+
+  <!-- STAGE 2: PRESERVATION & PORTIONING (保存術) -->
+  <g transform="translate(600, 210)">
+    <!-- Base Tray/Grid Background -->
+    <rect x="-90" y="-90" width="180" height="180" rx="16" fill="#CDD5D6"/>
+    
+    <!-- Divided Frozen Portions -->
+    <rect x="-75" y="-75" width="65" height="65" rx="8" fill="#14495B"/>
+    <rect x="10" y="-75" width="65" height="65" rx="8" fill="#14495B"/>
+    <rect x="-75" y="10" width="65" height="65" rx="8" fill="#14495B"/>
+    <rect x="10" y="10" width="65" height="65" rx="8" fill="#D9A227"/>
+
+    <!-- Ice/Preservation Geometry Indicators -->
+    <path d="M -42.5 -55 L -42.5 -30 M -55 -42.5 L -30 -42.5" stroke="#F2F4F3" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 42.5 -55 L 42.5 -30 M 30 -42.5 L 55 -42.5" stroke="#F2F4F3" stroke-width="4" stroke-linecap="round"/>
+    <path d="M -42.5 30 L -42.5 55 M -55 42.5 L -30 42.5" stroke="#F2F4F3" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Loose/Para-para granular preservation representation -->
+    <circle cx="30" cy="30" r="5" fill="#10171C"/>
+    <circle cx="55" cy="30" r="5" fill="#10171C"/>
+    <circle cx="30" cy="55" r="5" fill="#10171C"/>
+    <circle cx="55" cy="55" r="5" fill="#10171C"/>
+    <circle cx="42.5" cy="42.5" r="6" fill="#10171C"/>
+  </g>
+  <text x="600" y="410" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" text-anchor="middle">保存術</text>
+
+  <!-- STAGE 3: VARIED RECIPES (多彩料理) -->
+  <g transform="translate(980, 210)">
+    <!-- Recipe Node 1: Gyoza (Top Crescent Motif) -->
+    <g transform="translate(0, -80)">
+      <circle cx="0" cy="0" r="38" fill="#14495B"/>
+      <path d="M -20 8 A 22 22 0 0 1 20 8 Z" fill="#D9A227"/>
+      <circle cx="-10" cy="-6" r="3" fill="#F2F4F3"/>
+      <circle cx="0" cy="-10" r="3" fill="#F2F4F3"/>
+      <circle cx="10" cy="-6" r="3" fill="#F2F4F3"/>
+    </g>
+
+    <!-- Recipe Node 2: Hamburg (Center Patty Motif) -->
+    <g transform="translate(0, 0)">
+      <circle cx="0" cy="0" r="38" fill="#14495B"/>
+      <rect x="-22" y="-14" width="44" height="28" rx="14" fill="#D9A227"/>
+      <rect x="-14" y="-7" width="28" height="14" rx="7" fill="#F2F4F3"/>
+    </g>
+
+    <!-- Recipe Node 3: Soboro / Granular Dish (Bottom Dot Cluster Motif) -->
+    <g transform="translate(0, 80)">
+      <circle cx="0" cy="0" r="38" fill="#14495B"/>
+      <circle cx="-12" cy="-12" r="7" fill="#D9A227"/>
+      <circle cx="10" cy="-10" r="8" fill="#CDD5D6"/>
+      <circle cx="-8" cy="12" r="9" fill="#F2F4F3"/>
+      <circle cx="12" cy="10" r="6" fill="#D9A227"/>
+      <circle cx="0" cy="0" r="4" fill="#10171C"/>
+    </g>
+  </g>
+  <text x="980" y="410" font-family="sans-serif" font-size="28" font-weight="bold" fill="#10171C" text-anchor="middle">多彩料理</text>
+</svg>
